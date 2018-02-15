@@ -1,0 +1,79 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+{% block module %}
+    {{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}
+    <h1 class="text-center text-primary"><b>Liste des Evenements</b></h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr class="info text-muted">
+                <th>Titre</th>
+                <th>Description</th>
+                <th class="col-sm-1">Etat</th>
+                <th class="col-sm-1">Theme</th>
+                <th class="col-sm-1">Type</th>
+                <th class="col-sm-1">Horaire de Debut</th>
+                <th class="col-sm-1">Horaire de Fin</th>
+                <th class="col-sm-1">Fuseau Horaire</th>
+                <th class="col-sm-2">Adresse</th>
+                <th class="col-sm-1">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('user_owned_event_show', { 'id': entity.id }) }}"><b>{{ entity.titre }}</b></a></td>
+                    <td class="text-justify">{{ entity.description }}</td>
+
+                    <td>
+                        <a href="{{ path('user_owned_event_edit_State', { 'id': entity.id }) }}">
+                            {% if entity.etat == 2 %}<b><p class="text-success">Public</p></b>
+                            {% elseif entity.etat == 1 %}<b><p class="text-warning">Enregistré</br>(Non Publié)</p><b>
+                                    {% elseif entity.etat ==0 %} <b><p class="text-danger">Annulé</p></b>
+                                    {% endif %}
+                                    <a>
+                                        </td>
+                                        <td>{{ entity.theme }}</td>
+                                        <td>{{ entity.type }}</td>
+                                        <td>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>GMT + {{ entity.fuseauHoraire }}</td>
+                                        <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+                                        <td>               
+                                            <a href="{{ path('user_owned_event_show', { 'id': entity.id }) }}">
+                                                <button type="button" class="btn-xs btn-success">Afficher</button>
+                                            </a>
+
+                                            <a href="{{ path('user_owned_event_edit', { 'id': entity.id }) }}">
+                                                <button type="button" class="btn-xs btn-primary">Modifier</button>
+                                            </a>
+
+                                            <a href="{{ path('user_owned_event_publish', { 'id': entity.id }) }}">
+                                                <button type="button" class="btn-xs btn-info">Publier</button>
+                                            </a>
+
+                                            <a href="{{ path('user_owned_event_hide', { 'id': entity.id }) }}">
+                                                <button type="button" class="btn-xs btn-warning">Dépublier</button>
+                                            </a> 
+                                            <a href="{{ path('user_owned_event_cancel', { 'id': entity.id }) }}">
+                                                <button type="button" class="btn-xs btn-danger">Annuler</button>
+                                            </a>
+
+                                        </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    </table>
+
+
+                                    <a href="{{ path('user_owned_event_new') }}">
+                                        <button type="button" class="btn btn-info "> <h5>+ Nouveau Evenement</h5></button>
+                                    </a>
+
+                                {% endblock %}

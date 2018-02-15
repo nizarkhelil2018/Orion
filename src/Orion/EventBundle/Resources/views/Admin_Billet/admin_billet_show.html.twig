@@ -1,0 +1,95 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-fw fa-desktop"></i> {{ 'Display'|trans }}
+{% endblock operation %}
+{% block body -%}
+    <div class="text-center" style="color: blue">
+        <p>
+        <h1>
+            {{entity.libelle}}
+        </h1>
+    </p>
+</div>
+<table class="table table-condensed">
+
+    <tbody align="left">
+        <tr>
+            <th class="text-info col-sm-2">Id</th>
+            <td>{{ entity.id }}</td>
+
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Wording'|trans }}</th>
+            <td>{{ entity.libelle }}</td>
+        </tr>
+       
+
+        <tr>
+            <th class="text-info">{{ 'Price'|trans }}</th>
+            <td>{% if entity.type == 1 %}<p class="text-danger">{{ entity.prix }} <b>€</b></p>                                   
+            {% else %}<p class="text-success">{{ 'Free'|trans }}</p>                                    
+            {% endif %}</td></td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Number'|trans }}</th>
+            <td>{{ entity.nombre }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Waiting List'|trans }}</th>
+            <td>{{ entity.attente }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Event'|trans }}</th>
+            <td>{{ entity.evenement }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Creation date'|trans }}</th>
+            <td>{{ entity.dateCreation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateCreation|date('H:i') }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<table class="table-responsive" >
+
+    <tbody align="right">
+    <th class="col-sm-3">   
+        <a href="{{ path('admin_billet_edit', { 'id': entity.id }) }}">
+            <button type="button" class="btn btn-default fa fa-wrench"> {{ 'Edit'|trans }}</button>
+        </a>
+    </th>
+    <th class="text-danger">
+        {{ form_start(delete_form) }}
+
+        <a href="{{ path('admin_billet_search') }}" style="color: red">
+
+        </a>           
+        {{ form_end(delete_form) }}
+    </th>
+
+    <th class="col-sm-3">
+    </th>
+    <th class="col-sm-3 text-center">
+        <a href="{{ path('admin_billet_search') }}">
+            <button type="button" class="btn btn-default fa fa-list"> {{ 'All Tickets'|trans }}</button>
+        </a>
+
+    </th>
+    <th>
+        <a href="{{ path('admin_billet_new') }}" >                
+            <button type="button" class="btn btn-default fa fa-ticket "> {{ 'Create a Ticket'|trans }}</button>
+        </a>
+    </th>
+</tbody>
+</table>
+<ul class="pager">
+    <li class="previous"><a href="{{ path('admin_billet_show', { 'id': entity.id - 1 }) }}">{{ 'Privious Ticket'|trans }}</a></li>
+    <li class="next"><a href="{{ path('admin_billet_show', { 'id': entity.id + 1 }) }}">{{ 'Next Ticket'|trans }}</a></li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+{% block module %}
+    {{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-dashboard"></i>{{ 'State Edit'|trans }}
+{% endblock operation %}
+{% block body -%}  
+
+    <div >
+
+        <h1>
+            {{ 'State Edit'|trans }} <p class="text-center" style="color: blue">{{entity.titre}}</p>
+        </h1>
+
+    </div>
+    <table class="table table-condensed">
+
+        <tbody align="left">
+            <tr>
+                <th class="text-info col-sm-2">Id</th>
+                <td>{{ entity.id }}</td>
+
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Title'|trans }}</th>
+                <td>{{ entity.titre }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Description'|trans }}</th>
+                <td class="text-justify">{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'State'|trans }}</th>
+                <td>
+                    {% if entity.etat == 2 %}<p class="text-success">{{ 'Public'|trans }}</p>
+                    {% elseif entity.etat == 1 %}<p class="text-primary">{{ 'Registred'|trans }}</p>
+                    {% elseif entity.etat ==0 %} <p class="text-danger">{{ 'Cancelled'|trans }}</p>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Theme'|trans }}</th>
+                <td>{{ entity.theme }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Type'|trans }}</th>
+                <td>{{ entity.type }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Creation date'|trans }}</th>
+                <td>{{ entity.dateCreation|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Starting Schedule'|trans }}</th>
+                <td>{{ entity.horaireDebut|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Ending Schedule'|trans }}</th>
+                <td>{{ entity.HoraireFin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Time zone'|trans }}</th>
+                <td>GMT + {{ entity.fuseauHoraire }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table-responsive" >
+
+        <tbody align="right">
+
+
+
+        <th>
+            <a href="{{ path('admin_event_publish', { 'id': entity.id }) }}" >                
+                <button type="button" class="btn btn-success">{{ 'Publish'|trans }}</button>
+            </a>        
+        </th>
+        <th>
+            <a href="{{ path('admin_event_hide', { 'id': entity.id }) }}">
+                <button type="button" class="btn btn-warning">{{ 'Hide'|trans }}</button>
+            </a> 
+        </th>
+        <th>
+            <a href="{{ path('admin_event_cancel', { 'id': entity.id }) }}">
+                <button type="button" class="btn btn-danger">{{ 'Cancel'|trans }}</button>
+            </a>
+        </th>
+
+
+        <th> 
+
+
+            <a href="{{ path('admin_event_edit', { 'id': entity.id }) }}">
+                <button type="button" class="btn btn-default">{{ 'Edit'|trans }}</button>
+            </a>
+        </th>
+        <th class="col-sm-3 text-center">
+            <a href="{{ path('admin_event_search') }}">
+                <button type="button" class="btn btn-info">{{ 'All Events'|trans }}</button>
+            </a>
+
+        </th>
+
+    </tbody>
+</table>
+{% endblock %}

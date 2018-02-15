@@ -1,0 +1,61 @@
+{% extends 'OrionEventBundle::layout_front_user.html.twig' %}
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}   
+    <h1 class="text-center text-primary"><b>{{ 'Tickets List'|trans }}</b></h1>
+
+    {% if entities is empty %}
+        <div class="text-danger text-center">{{ 'No Tickets Found'|trans }}</div>
+    {% else %}
+       
+        <table class="table table-striped">
+            <thead>
+                <tr class="info">
+                    <th>{{ 'Event'|trans }}</th>
+                    <th>{{ 'Wording'|trans }}</th>                   
+                    <th>{{ 'Price'|trans }}</th>                    
+                    <th>{{ 'Available Tickets'|trans }}</th>                  
+              
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                {% set foo = 'bar' %}
+                    <tr>
+                        <td>{{ entity.evenement }}</td>
+
+                        <td><a href="{{ path('user_billet_show', { 'id': entity.id }) }}">{{ entity.libelle }}</a></td>
+                        
+            <td>
+            {% if entity.type == 1 %}<p class="text-danger">{{ entity.prix }} <b>€</b></p>                                   
+            {% else %}<p class="text-success">{{ 'Free'|trans }}</p>                                    
+            {% endif %}</td>
+                       
+                        <td cl>{{ entity.attente }}</td>
+                     
+                       
+                        <td>
+                            <ul style="list-style-type:none">
+                                <li>
+                                    <a href="{{ path('user_billet_reserve', { 'id': entity.id }) }}">
+                                        <button type="button" class="btn btn-default fa fa-shopping-cart"> Reserver</button>
+                                    </a>  
+                                </li>
+                                
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        
+    {% endif %}
+{% endblock %}

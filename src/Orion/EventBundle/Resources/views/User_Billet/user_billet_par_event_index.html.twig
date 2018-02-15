@@ -1,0 +1,72 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}   
+    <h1 class="text-center text-primary"><b>{{ 'Tickets List'|trans }}</b></h1>
+
+    {% if entities is empty %}
+        <div class="text-danger text-center">{{ 'No Tickets Found'|trans }}</div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+                <tr class="info">
+                   
+                    <th>{{ 'Wording'|trans }}</th>
+                   
+                    <th>{{ 'Price'|trans }}</th>
+                    <th>{{ 'Number'|trans }}</th>
+                    <th>{{ 'Waiting List'|trans }}</th>
+                   
+                    <th>{{ 'Creation date'|trans }}</th>
+                    <th>{{ 'Action'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set foo = -3 %}
+                {% for entity in entities %}
+                {% if foo != 1%}
+        {% set evenement = entity.evenement.titre%}   
+        {% set  foo= 1%}
+<h4 class="text-center">{{'Event'|trans}} : <b class="text-blue"> {{evenement}}</b></h4>
+        {%endif%}
+                    <tr>
+                        
+
+                        <td><a href="{{ path('user_billet_show', { 'id': entity.id }) }}">{{ entity.libelle }}</a></td>
+
+            <td>
+            {% if entity.type == 1 %}<p class="text-danger">{{ entity.prix }} <b>€</b></p>                                   
+            {% else %}<p class="text-success">{{ 'Free'|trans }}</p>                                    
+            {% endif %}</td>
+                        <td>{{ entity.nombre }}</td>
+                        <td>{{ entity.attente }}</td>
+                     
+                        <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateCreation|date('H:i') }}{% endif %}</td>
+                        <td>
+                            <ul style="list-style-type:none">
+                                <li>
+                                    <a href="{{ path('user_billet_show', { 'id': entity.id }) }}">
+                                        <button type="button" class="btn-xs btn-default btn-group fa fa-desktop"> {{ 'Display'|trans }}</button>
+                                    </a>  
+                                </li>
+                                <li>
+                                    <a href="{{ path('user_billet_edit', { 'id': entity.id }) }}">
+                                        <button type="button" class="btn-xs btn-default btn-group fa fa-wrench"> {{ 'Edit'|trans }}</button>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        
+    {% endif %}
+{% endblock %}

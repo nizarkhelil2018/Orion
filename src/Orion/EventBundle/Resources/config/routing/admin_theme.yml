@@ -1,0 +1,42 @@
+admin_theme_index:
+    path:     /index
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:index" }
+
+admin_theme_show:
+    path:     /{id}/show
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:show" }
+
+admin_theme_new:
+    path:     /new
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:new" }
+
+admin_theme_create:
+    path:     /create
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:create" }
+    methods:  POST
+
+admin_theme_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:edit" }
+
+admin_theme_update:
+    path:     /{id}/update
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:update" }
+    methods:  [POST, PUT]
+
+admin_theme_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:delete" }
+    methods:  [POST, DELETE]
+
+admin_theme_activate:
+    path:     /{id}/activate
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:activate" }
+
+admin_theme_deactivate:
+    path:     /{id}/deactivate
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:deactivate" }
+ 
+admin_theme_search:
+    path: /search
+    defaults: { _controller: "OrionEventBundle:Admin_Theme:search" }

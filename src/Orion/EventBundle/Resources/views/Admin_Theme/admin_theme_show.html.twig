@@ -1,0 +1,85 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+
+{% block module %}
+{{ 'Themes Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-fw fa-desktop"></i> {{ 'Display'|trans }}
+{% endblock operation %}
+{% block body -%}
+<div>
+    <p >
+    <h3>
+        {{ 'Theme'|trans }} : <div class="text-center" style="color: blue">{{entity.libelle}}</div>
+    </h3>
+</p>
+</div>
+<div class=" col-sm-12">
+    <table class="table table- table-bordered">
+        <tbody align="left">
+            <tr>
+                <th class="text-info col-sm-2">Id</th>
+                <td>{{ entity.id }}</td>
+                <td rowspan="5" class="col-sm-2">
+                    <ul style="list-style-type:none">
+                        <li>
+                            <a href="{{ path('admin_theme_edit', { 'id': entity.id }) }}" class="text-warning fa fa-wrench fa-2x">
+                                {#<button type="button" class="btn-xs text-warning fa fa-wrench"> {{ 'Edit'|trans }}</button>#}
+                            </a>
+                        </li>
+                        </br>
+                        <li class="text-danger"> 
+                            {{ form_start(delete_form) }}
+                            <a class="btn-danger " href="{{ path('admin_theme_search') }}">
+                            </a>           
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Wording'|trans }}</th>
+                <td>{{ entity.libelle }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Description'|trans }}</th>
+                <td class="text-justify">{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'State'|trans }}</th>
+                <td>
+                    {% if entity.etat == 1 %}<p class="text-success">{{ 'Active'|trans }}</p>
+                    <a href="{{ path('admin_theme_deactivate', { 'id': entity.id }) }}" class="text-danger fa fa-close fa-2x">
+                        {#<button type="button" class="btn-xs text-danger fa fa-close"> {{ 'Deactivate'|trans }}</button>#}
+                    </a> 
+                    {% else %}<p class="text-danger"> {{ 'Passive'|trans }}</p>
+                    <a href="{{ path('admin_theme_activate', { 'id': entity.id }) }}" class="text-success fa fa-check fa-2x">
+                       {# <button type="button" class="btn-xs text-success fa fa-check"> {{ 'Activate'|trans }}</button>#}
+                    </a>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th class="text-info">{{ 'Creation date'|trans }}</th>
+                <td>{{ entity.dateCreation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateCreation|date('H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th class="text-info"> {{ 'Modification date'|trans }} </th>
+                <td>{{ entity.dateModification|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateModification|date('H:i:s') }}</td>
+            </tr>
+            </td>
+        </tbody>
+    </table>
+</div>
+
+<ul class="pager">
+    <li class="previous"><a href="{{ path('admin_theme_show', { 'id': entity.id - 1 }) }}"> {{ 'Previous Theme'|trans }} </a></li>
+    <li class="midtext">
+        <a href="{{ path('admin_theme_search') }}">
+            <b> {{ 'All Themes'|trans }} </b>
+        </a>
+    </li>
+    <li class="next"><a href="{{ path('admin_theme_show', { 'id': entity.id + 1 }) }}"> {{ 'Next Theme'|trans }} </a></li>
+</ul>
+
+{% endblock %}

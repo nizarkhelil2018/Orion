@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="wrapper">
+<div class="form-signin">
+    <h2 class="form-signin-heading text-center text-success">Orion : Inscription</h2>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+   <div class="form-control">
+{{ form_widget(form) }}
+    <div>
+        <input class="btn btn-lg btn-success btn-block" type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+   </div>
+</div>
+</div>
+

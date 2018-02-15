@@ -1,0 +1,50 @@
+admin_event_index:
+    path:     /index
+    defaults: { _controller: "OrionEventBundle:Admin_Event:index" }
+
+admin_event_show:
+    path:     /{id}/show
+    defaults: { _controller: "OrionEventBundle:Admin_Event:show" }
+
+admin_event_new:
+    path:     /new
+    defaults: { _controller: "OrionEventBundle:Admin_Event:new" }
+
+admin_event_create:
+    path:     /create
+    defaults: { _controller: "OrionEventBundle:Admin_Event:create" }
+    methods:  POST
+
+admin_event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "OrionEventBundle:Admin_Event:edit" }
+
+admin_event_update:
+    path:     /{id}/update
+    defaults: { _controller: "OrionEventBundle:Admin_Event:update" }
+    methods:  [POST, PUT]
+
+admin_event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OrionEventBundle:Admin_Event:delete" }
+    methods:  [POST, DELETE]
+    
+admin_event_publish:
+    path:     /{id}/publish
+    defaults: { _controller: "OrionEventBundle:Admin_Event:publish" }
+
+admin_event_hide:
+    path:     /{id}/hide
+    defaults: { _controller: "OrionEventBundle:Admin_Event:hide" }
+   
+admin_event_cancel:
+    path:     /{id}/cancel
+    defaults: { _controller: "OrionEventBundle:Admin_Event:cancel" }
+    
+admin_event_edit_State:
+    path:     /{id}/editState
+    defaults: { _controller: "OrionEventBundle:Admin_Event:editState" }
+    
+admin_event_search:
+    path: /
+    defaults: { _controller: "OrionEventBundle:Admin_Event:search" }

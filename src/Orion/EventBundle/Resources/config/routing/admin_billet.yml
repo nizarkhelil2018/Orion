@@ -1,0 +1,38 @@
+admin_billet_index:
+    path:     /index
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:index" }
+
+admin_billet_show:
+    path:     /{id}/show
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:show" }
+
+admin_billet_new:
+    path:     /new
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:new" }
+
+admin_billet_ajout:
+    path:     /{id}/ajout
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:ajout" }    
+
+admin_billet_create:
+    path:     /create
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:create" }
+    requirements: { _method: post }
+
+admin_billet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:edit" }
+
+admin_billet_update:
+    path:     /{id}/update
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:update" }
+    requirements: { _method: post|put }
+
+admin_billet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:delete" }
+    requirements: { _method: post|delete }
+    
+admin_billet_search:
+    path: /search
+    defaults: { _controller: "OrionEventBundle:Admin_Billet:search" }

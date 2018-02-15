@@ -1,0 +1,70 @@
+{% extends 'OrionEventBundle::layout_front_user.html.twig' %}
+
+{% block module %}
+    {{ 'Reservations Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}   
+
+<h1 class="text-center text-primary"><b>{{ 'Reservations List'|trans }}</b></h1>
+
+    {% if entities is empty %}
+<div class="text-danger text-center">{{ 'No Reservation Found'|trans }}</div>
+    {% else %}
+
+<table class="table table-striped">
+    <thead>
+        <tr class="info">
+            <th>{{ 'Event'|trans }}</th>
+            <th>{{ 'Ticket'|trans }}</th>                   
+
+
+            <th>{{ 'Reservation date'|trans }}</th>
+            <th>{{ 'Number'|trans }}</th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+                {% for entity in entities %}
+        {% if entity.utilisateur==app.user%}
+        <tr>
+            <td><a href="{{path('user_event_show', { 'id': entity.billet.evenement.id })}}">{{entity.billet.evenement.titre}}</a></td>
+            <td><a href="{{path('user_billet_reserve', { 'id': entity.billet.id })}}">{{entity.billet.libelle}}</a></td>
+            <td>{% if entity.dateReservation %}{{ entity.dateReservation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateReservation|date('H:i') }}{% endif %}</td>
+            <td>{{entity.number}}</td>   
+            <td>
+                <a   onclick="callAlert()"  class="fa fa-close fa-2x text-danger">{#{{'Cancel'|trans}}#}</a>
+                <script>
+                    function callAlert() {
+                        swal({
+                            title: "Etes vous sur de vouloir annuler la réservation?",
+                            text: "",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Oui, Annuler réservation!",
+                            closeOnConfirm: false
+                        },
+                        function() {
+                    //redirect
+                            updateUrl();
+                            return true;
+                        });
+                    }
+                    function updateUrl() {
+                        var url = '{{ path("user_reservation_cancell", {'id': entity.id}) }}';
+                        window.location.href = url;
+                    }
+                </script>
+            </td>    
+        </tr>
+        {%endif%}
+            {%endfor%}
+    </tbody>
+</table>
+
+
+    {% endif %}
+{% endblock %}

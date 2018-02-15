@@ -1,0 +1,49 @@
+{% extends 'OrionEventBundle::layout_front_user.html.twig' %}
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}
+<h1 class="text-center text-primary"><b>{{ 'Event'|trans }}s</b></h1>
+
+{% for entity in entities %}
+<table class="col-lg-3 col-xs-6 table-bordered" >
+    
+    <div height="160">
+        <tr>
+
+        <td class="text-center text-primary"><h3>{{ entity.titre }}</h3></td>    
+    </tr>
+    <tr>
+    <td >
+  
+            <img src="{{ asset('uploads/' ~ entity.path) }}"class="img-rounded img-responsive" alt="entity.titre" >
+    
+            </td>
+        
+    </tr>
+    <tr>
+        <td ><b>{{ 'Place'|trans }} : </b>{{ entity.ville }}, {{ entity.pays }}</br>
+            <b>{{ 'Starts the'|trans }} </b>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('d/m/Y') }} <b>{{ 'at'|trans }} </b>{{ entity.horaireDebut|date('H:i') }}{% endif %}</br>
+            <b>{{ 'Ends the'|trans }} </b>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('d/m/Y') }} <b>{{ 'at'|trans }}</b> {{ entity.HoraireFin|date('H:i') }}{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td class="text-center">
+            
+            <a href="{{ path('user_event_show', { 'id': entity.id }) }}" class="small-box-footer">
+                {{ 'More Details'|trans }} <i class="fa fa-arrow-circle-right"></i>
+            </a>
+
+        </td>
+    </tr>
+    </div>
+</table>
+
+      {% endfor %}
+
+
+                                {% endblock %}

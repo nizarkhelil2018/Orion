@@ -1,0 +1,18 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+{% block module %}
+    {{ 'Inscription'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-fw fa-check"></i> {{ 'Confirmation'|trans }}
+{% endblock operation %}
+{% block body -%}  
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    {% if targetUrl %}
+    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+    {% endif %}
+
+{% endblock body %}

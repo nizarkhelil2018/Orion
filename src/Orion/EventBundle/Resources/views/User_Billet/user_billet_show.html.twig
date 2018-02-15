@@ -1,0 +1,91 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-fw fa-desktop"></i> {{ 'Display'|trans }}
+{% endblock operation %}
+{% block body -%}
+<div >
+    <h2 class="text-center" style="color: blue"> {{ 'Event'|trans }} : {{entity.evenement}}</h2></Br>
+    <h4 class="text-center text-aqua " ><b class="text-bold">{{ 'Ticket'|trans }}: </b>{{entity.libelle}}</h4>
+</div>
+<table class="table table-condensed">
+
+    <tbody align="left">
+
+        <tr>
+            <th class="text-info">{{ 'Wording'|trans }}</th>
+            <td>{{ entity.libelle }}</td>
+        </tr>
+        
+
+        <tr>
+            <th class="text-info">{{ 'Price'|trans }}</th>
+            <td>
+            {% if entity.type == 1 %}<p class="text-danger">{{ entity.prix }} <b>€</b></p>                                   
+            {% else %}<p class="text-success">{{ 'Free'|trans }}</p>                                    
+            {% endif %}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Number'|trans }}</th>
+            <td>{{ entity.nombre }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Waiting List'|trans }}</th>
+            <td>{{ entity.attente }}</td>
+        </tr>
+
+        <tr>
+            <th class="text-info">{{ 'Creation date'|trans }}</th>
+            <td>{{ entity.dateCreation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateCreation|date('H:i') }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<table class="table-responsive" >
+
+    <tbody align="right">
+    <th class="col-sm-3">   
+        <a href="{{ path('user_billet_edit', { 'id': entity.id }) }}" class="fa fa-edit text-warning fa-2x">
+            {#<button type="button" class="btn btn-warning">{{ 'Edit'|trans }}</button>#}
+        </a>
+    </th>
+    <th class="col-sm-3">
+        <a href="{{ path('user_owned_event_booking_list', { 'id': entity.evenement.id })}}" class="fa fa-2x fa-shopping-cart text-purple">
+                                           {# <button type="button" class="btn-xs btn-default btn-block text-left btn-group fa fa-list"> Liste des réservation</button>#}
+                                        </a>
+    </th>
+    <th class="text-danger">
+        {{ form_start(delete_form) }}
+
+        <a href="{{ path('user_billet_search') }}" style="color: red">
+
+        </a>           
+        {{ form_end(delete_form) }}
+    </th>
+
+    <th class="col-sm-3">
+    </th>
+    
+   
+</tbody>
+</table>
+<ul class="pager">
+    <li class="previous"><a href="{{ path('user_billet_show', { 'id': entity.id - 1 }) }}">{{ 'Next Ticket'|trans }}</a></li>
+   
+    <li class="midtext">
+        <a href="{{ path('user_billet_search') }}">
+            <b> {{ 'All Tickets'|trans }} </b>
+        </a>
+    </li>
+    
+    
+    
+    <li class="next"><a href="{{ path('user_billet_show', { 'id': entity.id + 1 }) }}">{{ 'Previous Ticket'|trans }}</a></li>
+</ul>
+
+{% endblock %}

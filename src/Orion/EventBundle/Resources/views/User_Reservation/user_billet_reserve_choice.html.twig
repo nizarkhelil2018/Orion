@@ -1,0 +1,111 @@
+{% extends 'OrionEventBundle::layout_front_user.html.twig' %}
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-ticket"></i> {{ 'Reserve'|trans }}
+{% endblock operation %}
+{% block body -%}   
+<script>
+
+
+    function callAlert() {
+        swal({
+            title: "Etes vous sur de vouloir réserver?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Oui, Réserver!",
+            closeOnConfirm: false
+        },
+        function() {
+//redirect
+            updateUrl();
+            return true;
+        });
+    }
+
+
+    function updateUrl() {
+
+        var url = '{{ path("user_billet_reserve_end", {'idBillet': billet.id,'nbBillet': 'nbBilletC'}) }}';
+        url = url.replace("nbBilletC", document.getElementById('number').value);
+        window.location.href = url;
+
+    }
+</script>
+
+<div class="text-center"><h3>{{'Event'|trans}} :  <b class="text-purple">{{ billet.evenement.titre }}</b></h3></div>
+<table class="table table-responsive table-bordered">
+
+    <tr>
+        <th class="col-sm-2"><h4 class="text-purple text-bold">{{ billet.evenement.titre }}</h4></th>
+<td rowspan="6"><b class="text-info ">{{ 'Description'|trans }}:</b></br>
+    <p class="text-justify">{{ billet.evenement.description }}</p></td></td>
+<th class="col-sm-2 text-info">{{ 'Theme'|trans }}</th>
+<td class="col-sm-3">{{ billet.evenement.theme }}</td>
+
+</tr>
+<tr>
+    <td rowspan="5"><img src="{{ asset('uploads/' ~ billet.evenement.path) }}"class="img-rounded img-responsive" alt="billet.evenement.titre"></td>    
+    <th class="text-info">{{ 'Type'|trans }}</th>
+    <td>{{ billet.evenement.type }}</td>    
+</tr>
+<tr>   
+    <th class="text-info">{{ 'Starts the'|trans }}</th>
+    <td>{% if billet.evenement.horaireDebut %}{{ billet.evenement.horaireDebut|date('d/m/Y') }} {{ 'at'|trans }} {{ billet.evenement.horaireDebut|date('H:i') }}{% endif %}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Ends the'|trans }}</th>
+    <td>{% if billet.evenement.HoraireFin %}{{ billet.evenement.HoraireFin|date('d/m/Y') }} {{ 'at'|trans }} {{ billet.evenement.HoraireFin|date('H:i') }}{% endif %}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Time zone'|trans }}</th>
+    <td>GMT + {{ billet.evenement.fuseauHoraire }}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Address'|trans }}</th>
+    <td>{{ billet.evenement.adresse }}, {{ billet.evenement.ville }} {{ billet.evenement.codePostal }}, {{ billet.evenement.pays }}</td>
+</tr>
+
+</table></br>
+                <div class="text-center"><h3>{{'Ticket'|trans}} :  <b class="text-purple">{{ billet.libelle}}</b></h3></div>
+                <table class="table table-responsive">
+                    <tr>
+                        <th class="col-sm-4 text-primary">{{'Ticket'|trans}}</th>
+                        <td>{{billet.libelle}}</td>
+                    </tr>
+                    <tr>
+                        <th class="col-sm-4 text-primary">{{'Price'|trans}}</th>
+                        <td>{% if billet.type == 1 %}<b class="text-danger">{{ billet.prix }} €</b></p>                                   
+                            {% else %}<p class="text-success">{{ 'Free'|trans }}</p>                                    
+                            {% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-primary">Nombre des billets à reserver </th>
+                        <td><input id="number" type="number" value="1" name="quantity" min="1" max="{{ billet.attente }}">&nbsp; {{'Ticket'|trans}}(s)
+                        </br></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                    <button onclick="callAlert()" type="button" class="btn-sm btn-success btn-group fa fa-check"> 
+            {{'Reserve'|trans}}
+                        </button> 
+                        </td>
+                    </tr>
+
+                </table>
+                
+                <div class="text-left">
+            <a href="{{ path('user_billet_par_event_reserve', { 'id': billet.evenement.id }) }}">
+                <button class="btn  btn-default fa fa-list"> {{'All Tickets'|trans}}</button>
+            </a>
+        				
+                </div>
+
+
+
+{% endblock %}

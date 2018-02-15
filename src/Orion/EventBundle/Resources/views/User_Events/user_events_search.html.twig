@@ -1,0 +1,132 @@
+{% extends 'OrionEventBundle::layout_front_user.html.twig' %}
+
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-search"></i> {{ 'Search'|trans }}
+{% endblock operation %}
+{% block body -%}
+<form method="POST" action="" class="text-center">
+    <table>
+        <tr>
+            <td class="col-sm-3">
+                <label>{{ 'Title'|trans }}</label>                
+                <input type='text' name="input_titre" value=""/>
+            </td>
+            <td class="col-sm-3">
+                <label>{{ 'Description'|trans }}</label>
+                <input type='text' name="input_description" value=""/>
+            </td>
+            <td class="col-sm-3">                
+                <label>{{ 'Country'|trans }}</label>
+                <input type='text' name="input_pays" value=""/>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-3">
+                <label>{{ 'Type'|trans }}</label>
+                <input type='text' name="input_type" value=""/>
+            </td>           
+            <td class="col-sm-3">
+                <label>{{ 'Theme'|trans }}</label>
+                <input type='text' name="input_theme" value=""/>
+            </td>
+            <td class="col-sm-3">
+                <label class="text-right">Etat</label>
+                <ul style="list-style-type:none" class="text-left">
+                    <li>
+                        <input type="checkbox" name="input_etat" value="0"> {{ 'Cancelled'|trans }}
+                    </li>
+                    <li>
+                        <input type="checkbox" name="input_etat" value="1" > {{ 'Registred'|trans }}
+                    </li>
+                    <li>
+                        <input type="checkbox" name="input_etat" value="2" > {{ 'Public'|trans }}
+                    </li>
+            </td> 
+
+        </tr>
+        <tr>
+            <td class="col-sm-3">
+                <label>{{ 'Starts the'|trans }}</label>
+                <input type='date' name="input_date_debut" value=""/>
+            </td>
+        </tr>
+
+    </table> 
+    <div class="text-center">
+        </br>
+        <input type="submit" class="btn btn-success" name="rechercher" value={{ 'Search'|trans }}>
+    </div>
+</form>
+</br>
+
+    {% if entities is empty %}
+<div class="text-danger text-center">{{ 'No Events Found'|trans }}</div>
+    {% else %}
+        {% for entity in entities %}
+<table class="table table-responsive">
+    <tr>
+        <th class="col-sm-2"><h4 class="text-purple text-bold">{{ entity.titre }}</h4></th>
+<td rowspan="7"><b class="text-info ">{{ 'Description'|trans }}:</b></br>
+    <p class="text-justify">{{ entity.description }}</p></td></td>
+<th class="col-sm-1 text-info">{{ 'Theme'|trans }}</th>
+<td class="col-sm-2">{{ entity.theme }}</td>
+<td rowspan="7" class="col-sm-2">
+    <ul style="list-style-type:none">
+ 
+        <li>
+            {% if "now"|date('YmdHis')  < entity.horaireDebut|date|date('YmdHis') %}
+                    <b class="text-success"><a href="{{ path('user_billet_par_event_reserve', { 'id': entity.id }) }}">
+                    <button type="button" class="btn btn-default fa fa-ticket"> {{'Tickets Details'|trans}}</button>
+                    </a></b>
+                    {% elseif "now"|date('YmdHis')  > entity.horaireDebut|date|date('YmdHis')  and "now"|date('YmdHis')  < entity.HoraireFin|date('YmdHis')%}
+                    <b class="text-warning"><a href="{{ path('user_billet_par_event_reserve', { 'id': entity.id }) }}">
+                    <button type="button" class="btn btn-default fa fa-ticket"> {{'Tickets Details'|trans}}</button>
+                </a></b>
+                    {% elseif "now"|date('YmdHis')  > entity.HoraireFin|date('YmdHis') %}
+                    <b class="text-danger">{{ 'Passed Event'|trans }}</b>
+                    {% else %}
+                    erreur
+                    {% endif %}
+        </li>
+    </ul>					
+
+</td>
+</tr>
+<tr>
+    <td rowspan="6"><img src="{{ asset('uploads/' ~ entity.path) }}"class="img-rounded img-responsive" alt="entity.titre"></td>    
+    <th class="text-info">{{ 'Type'|trans }}</th>
+    <td>{{ entity.type }}</td>    
+</tr>
+<tr>   
+    <th class="text-info">{{ 'Starts the'|trans }}</th>
+    <td>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.horaireDebut|date('H:i') }}{% endif %}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Ends the'|trans }}</th>
+    <td>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.HoraireFin|date('H:i') }}{% endif %}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Time zone'|trans }}</th>
+    <td>GMT + {{ entity.fuseauHoraire }}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Address'|trans }}</th>
+    <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'State'|trans }}</th>
+    <td>
+                {% if entity.etat == 2 %}<b><p class="text-success">{{ 'Public'|trans }}</p></b>
+                {% elseif entity.etat == 1 %}<b><p class="text-warning">{{ 'Registred'|trans }}</p><b>
+                        {% elseif entity.etat ==0 %} <b><p class="text-danger">{{ 'Cancelled'|trans }}</p></b>
+                        {% endif %}
+                </td>
+                </tr>  
+                </table>
+                    {% endfor %}
+                {% endif %}
+            {% endblock %}

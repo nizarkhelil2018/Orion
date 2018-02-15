@@ -1,0 +1,57 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}
+<h1 class="text-center text-primary"><b>Liste des Evenements</b></h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="info text-muted">
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Description'|trans }}</th>
+            <th class="col-sm-1">{{ 'Theme'|trans }}</th>
+            <th class="col-sm-1">{{ 'Type'|trans }}</th>
+            <th class="col-sm-1">{{ 'Starting Schedule'|trans }}</th>
+            <th class="col-sm-1">{{ 'Ending Schedule'|trans }}</th>
+            <th class="col-sm-1">{{ 'Time zone'|trans }}</th>
+            <th class="col-sm-2">{{ 'Addrss'|trans }}</th>
+            <th class="col-sm-1">{{ 'Action'|trans }}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('user_event_show', { 'id': entity.id }) }}"><b>{{ entity.titre }}</b></a></td>
+            <td class="text-justify">{{ entity.description }}</td>
+
+            <td>{{ entity.theme }}</td>
+            <td>{{ entity.type }}</td>
+            <td>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.horaireDebut|date('H:i') }}{% endif %}</td>
+            <td>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.HoraireFin|date('H:i') }}{% endif %}</td>
+            <td>GMT + {{ entity.fuseauHoraire }}</td>
+            <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+            <td>               
+                <a href="{{ path('user_event_show', { 'id': entity.id }) }}">
+                    <button type="button" class="btn-xs btn-success">{{ 'Display'|trans }}</button>
+                </a>
+
+                <a href="{{ path('user_billet_par_event', { 'id': entity.id }) }}">
+                    <button type="button" class="btn-xs btn-info">Voir les billets</button>
+                </a>
+
+            </td>
+        </tr>
+                                    {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+                                {% endblock %}

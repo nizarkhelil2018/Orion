@@ -1,0 +1,14 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+{% block module %}
+    {{ 'Home Page'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-fw fa-home"></i> {{ 'Home Page'|trans }}
+{% endblock operation %}
+{% block body -%} 
+<h3>{{ 'Hello'|trans }} {{ app.user.username}} </h3></br>
+    
+<h4 class="text-blue">{{ 'Orion is a platform for managing business opportunities.'|trans }}</h5></br>
+{{ 'Being administrator, Orion Event gives you the opportunity to manage all entities. You are the only responsible for managing themes and types of events. You can also manage events, tickets and bookings made by other users.
+                    For the Orion Forum module, you have the opportunity to manage forums and their categories as well as topics and answers to them.'|trans }}
+{% endblock %}

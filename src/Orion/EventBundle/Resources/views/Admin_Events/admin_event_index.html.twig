@@ -1,0 +1,105 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}
+<h1 class="text-center text-primary"><b>{{ 'Events List'|trans }}</b></h1>
+
+
+    {% if entities is empty %}
+<div class="text-danger text-center">{{ 'No Events Found'|trans }}</div>
+    {% else %}
+        {% for entity in entities %}
+<table class="table table-responsive">
+    <tr>
+        <th class="col-sm-2"><a href="{{ path('admin_event_show', { 'id': entity.id }) }}" class="text-purple text-bold"><h4><b>{{ entity.titre }}</b></h4></a></th>
+<td rowspan="7"><b class="text-info ">{{ 'Description'|trans }}:</b></br>
+    <p class="text-justify">{{ entity.description }}</p></td></td>
+<th class="col-sm-1 text-info">{{ 'Theme'|trans }}</th>
+<td class="col-sm-2">{{ entity.theme }}</td>
+<td rowspan="7" class="col-sm-2">
+    <ul style="list-style-type:none">
+        
+	{% if entity.etat == 2 %}
+        <li>
+            <a href="{{ path('admin_event_hide', { 'id': entity.id }) }}" class=" fa fa-ban text-warning fa fa-2x">
+                {#<button type="button" class="btn-xs btn-block text-left fa fa-ban text-warning"> {{ 'Hide'|trans }}</button>#}
+            </a> 
+        </li>
+        <li>
+            <a href="{{ path('admin_event_cancel', { 'id': entity.id }) }}" class="fa fa-close text-danger fa fa-2x">
+                {#<button type="button" class="btn-xs btn-block text-left  fa fa-close text-danger"> {{ 'Cancel'|trans }}</button>#}
+            </a> 
+        </li>
+
+                    {% elseif entity.etat == 1 %}
+        <li>                            
+            <a href="{{ path('admin_event_publish', { 'id': entity.id }) }}" class="fa fa-share text-success fa-2x">
+               {# <button type="button" class="btn-xs btn-block text-left   fa fa-share text-success"> {{ 'Publish'|trans }}</button>#}
+            </a>  
+        </li>
+        <li>
+            <a href="{{ path('admin_event_cancel', { 'id': entity.id }) }}" class="fa fa-close text-danger fa fa-2x">
+                {#<button type="button" class="btn-xs btn-block text-left  fa fa-close text-danger"> {{ 'Cancel'|trans }}</button>#}
+            </a>
+        </li>
+                    {% elseif entity.etat ==0 %} 
+        <li>                           
+            <a href="{{ path('admin_event_publish', { 'id': entity.id }) }}" class="fa fa-share text-success fa-2x">
+                {#<button type="button" class="btn-xs btn-block text-left  fa fa-share text-success"> {{ 'Publish'|trans }}</button>#}
+            </a>  
+        </li>
+        <li>
+            <a href="{{ path('admin_event_hide', { 'id': entity.id }) }}" class="fa fa-ban text-warning fa-2x">
+
+               {# <button type="button" class="btn-xs btn-block text-left  fa fa-ban text-warning"> {{ 'Hide'|trans }}</button>#}
+            </a> 
+        </li>
+                    {% endif %}  
+        <li>
+            <a href="{{ path('admin_event_edit', { 'id': entity.id }) }}" class="fa fa-edit text-info fa-2x">
+               {# <button type="button" class="btn-xs btn-block text-left  fa fa-edit text-info"> {{ 'Edit'|trans }}</button>#}
+            </a>
+        </li>
+    </ul>					
+
+</td>
+</tr>
+<tr>
+    <td rowspan="6"><img src="{{ asset('uploads/' ~ entity.path) }}"class="img-rounded img-responsive" alt="entity.titre"></td>    
+    <th class="text-info">{{ 'Type'|trans }}</th>
+    <td>{{ entity.type }}</td>    
+</tr>
+<tr>   
+    <th class="text-info">{{ 'Starts the'|trans }}</th>
+    <td>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('d/m/Y ') }} {{ 'at'|trans }} {{ entity.horaireDebut|date('H:i') }}{% endif %}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Ends the'|trans }}</th>
+    <td>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.HoraireFin|date('H:i') }}{% endif %}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Time zone'|trans }}</th>
+    <td>GMT + {{ entity.fuseauHoraire }}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'Address'|trans }}</th>
+    <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+</tr>
+<tr>    
+    <th class="text-info">{{ 'State'|trans }}</th>
+    <td>
+                {% if entity.etat == 2 %}<b><p class="text-success">{{ 'Public'|trans }}</p></b>
+                {% elseif entity.etat == 1 %}<b><p class="text-warning">{{ 'Registred'|trans }}</p><b>
+                        {% elseif entity.etat ==0 %} <b><p class="text-danger">{{ 'Cancelled'|trans }}</p></b>
+                        {% endif %}
+                </td>
+                </tr>  
+                </table>
+                    {% endfor %}
+                {% endif %}
+            {% endblock %}

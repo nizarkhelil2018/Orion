@@ -1,0 +1,108 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-fw fa-desktop"></i> {{ 'Display'|trans }}
+{% endblock operation %}
+{% block body -%}
+<div class="text-center" style="color: blue">
+    <p>
+    <h1>
+            {{entity.titre}}
+    </h1>
+</p>
+</div>
+<table class="table table-condensed">
+
+    <tbody align="left">
+        <tr>
+            <th class="text-info col-sm-2">Id</th>
+            <td>{{ entity.id }}</td>
+            <td rowspan="9"class="col-sm-3"><img src="{{ asset('uploads/' ~ entity.path) }}" class="img-responsive"></td>
+        </tr>
+        <tr>
+            <th class="text-info">Titre</th>
+            <td>{{ entity.titre }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Description</th>
+            <td class="text-justify">{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Etat</th>
+            <td>
+                {% if entity.etat == 2 %}<strong class="text-success str">Public</strong>
+                {% elseif entity.etat == 1 %}<strong class="text-primary">Enregistré</strong>
+                {% elseif entity.etat ==0 %} <strong class="text-danger">Annulé</strong>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="text-info">Theme</th>
+            <td>{{ entity.theme }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Type</th>
+            <td>{{ entity.type }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Date de Creation</th>
+            <td>{{ entity.dateCreation|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Horaire de Debut</th>
+            <td>{{ entity.horaireDebut|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Horaire de Fin</th>
+            <td>{{ entity.HoraireFin|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Fuseau Horaire</th>
+            <td>GMT + {{ entity.fuseauHoraire }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">Adresse</th>
+            <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="table-responsive" >
+
+    <tbody align="right">
+    <th class="col-sm-6">   
+        <a href="{{ path('admin_event_edit', { 'id': entity.id }) }}" class="fa fa-2x fa-wrench text-warning">
+            {#<button type="button" class="btn btn-group-sm btn-default text-warning ">{{'Edit'|trans}}</button>#}
+        </a>
+    </th>
+    <th class="text-danger btn-group-sm col-sm-6">
+        
+
+        
+{{ form(delete_form) }}
+          
+        {#{{ form_end(delete_form) }}#}
+    </th>
+    {#<th class="col-sm-6">
+    <a href="{{ path('admin_event_delete', { 'id': entity.id }) }}" class="fa fa-2x fa-close text-danger">
+    </a>
+    </th>#}
+
+    <th class="col-sm-6">
+        <a href="{{ path('admin_event_search') }}" class="fa fa-2x fa-list-ul">
+            {#<button type="button" class="btn btn-group-sm btn-default">Tous les Evenements</button>#}
+        </a>
+
+    </th>
+    
+</tbody>
+</table>
+<ul class="pager">
+    <li class="previous"><a href="{{ path('admin_event_show', { 'id': entity.id - 1 }) }}">{{'Previous Event'|trans}}</a></li>
+    <li class="next"><a href="{{ path('admin_event_show', { 'id': entity.id + 1 }) }}">{{'Next Event'|trans}}</a></li>
+</ul>     
+{% endblock %}

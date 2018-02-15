@@ -1,0 +1,85 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+{% block module %}
+    {{ 'Types Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-search"></i> {{ 'Search'|trans }}
+{% endblock operation %}
+{% block body -%}
+
+        <form method="POST" action="" class="text-center">
+        <table class="text-left">
+            <tr>
+                <td class="col-sm-3">
+                    <label>{{ 'Wording'|trans }}</label>
+                    <input type='text' name="input_libellet" />
+                </td>
+                <td class="col-sm-3">
+                    <label>{{ 'Description'|trans }}</label>
+                    <input type='text' name="input_description" />
+                </td>
+                <td class="col-sm-3">
+                    <label>{{ 'State'|trans }}</label>
+                    <ul style="list-style-type:none">
+                        <li>
+                            <input type="checkbox" name="input_etat" value="1"> {{ 'Active'|trans }}
+                        </li>
+                        <li>
+                            <input type="checkbox" name="input_etat" value="0" > {{ 'Passive'|trans }}
+                        </li>
+                </td> 
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-success fa fa-search" name="rechercher" value={{ 'Search'|trans }}>
+    </form></br>
+
+    {% if entities is empty %}
+        <div class="text-danger text-center">{{ 'No Themes Found'|trans }}</div>
+    {% else %}
+        <table class="table table-bordered">
+            <thead>            
+                <tr class="info">
+                    <th class="col-sm-1 text-center">{{ 'Wording'|trans }}</th>
+                    <th class="col-sm-6 text-center">{{ 'Description'|trans }}</th>
+                    <th class="col-sm-1 text-center">{{ 'State'|trans }}</th>
+                    <th class="col-sm-1 text-center">{{ 'Creation date'|trans }}</th>
+                    <th class="col-sm-1 text-center">{{ 'Modification date'|trans }}</th>
+                    <th class="col-sm-1 text-center">{{ 'Action'|trans }}</th>
+                </tr>            
+            </thead>
+            <tbody >
+                {% for entity in entities %}
+                    <tr>
+                        <td class="text-info"><a href="{{ path('admin_type_show', { 'id': entity.id }) }}"><b>{{ entity.libelle }}</b></a></td>
+                        <td class="text-justify"> {{entity.description}}</td>
+                        <td> <a href="{{ path('admin_type_edit', { 'id': entity.id }) }}">
+                                {% if entity.etat == 1 %}<p class="text-success">{{ 'Active'|trans }}</p>
+                                <a href="{{ path('admin_type_deactivate', { 'id': entity.id }) }}" class="fa fa-thumbs-o-down text-danger fa-2x">
+                                        {#<button type="button" class="btn-xs  btn-group fa fa-thumbs-o-down text-danger"> {{ 'Deactivate'|trans }}</button>#}
+                                    </a>
+                                {% else %}<p class="text-danger">{{ 'Passive'|trans }}</p>
+                                <a href="{{ path('admin_type_activate', { 'id': entity.id }) }}" class="fa fa-thumbs-o-up text-success fa-2x">
+                                        {#<button type="button" class="btn-xs btn-group fa fa-thumbs-o-up text-success"> {{ 'Activate'|trans }}</button>#}
+                                    </a>
+                                {% endif %}
+                                <a>
+                                    </td>
+                                    <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateCreation|date('H:i') }}{% endif %}</td>
+                                    <td>{% if entity.dateModification %}{{ entity.dateModification|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateModification|date('H:i') }}{% endif %}</td>
+                                    <td>
+                                        <a href="{{ path('admin_type_show', { 'id': entity.id }) }}" class="fa fa-desktop text-primary fa-2x">
+                                            {#<button type="button" class="btn-xs  btn-group fa fa-desktop text-primary"> {{ 'Display'|trans }}</button>#}
+                                        </a>
+                                        </br>
+                                        <a href="{{ path('admin_type_edit', { 'id': entity.id }) }}" class="fa fa-wrench text-warning fa-2x">
+                                           {# <button type="button" class="btn-xs  btn-group fa fa-wrench text-warning"> {{ 'Edit'|trans }}</button>#}
+                                        </a>
+
+                                    </td>
+                                    </tr>
+                                {% endfor %}   
+                                </tbody>
+                                </table>
+
+                            {% endif %}
+                        {% endblock body %}                                                

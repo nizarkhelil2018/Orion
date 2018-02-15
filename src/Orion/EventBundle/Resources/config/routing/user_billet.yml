@@ -1,0 +1,47 @@
+user_billet_index:
+    path:     /index
+    defaults: { _controller: "OrionEventBundle:User_Billet:index" }
+
+user_billet_show:
+    path:     /{id}/show
+    defaults: { _controller: "OrionEventBundle:User_Billet:show" }
+
+user_billet_new:
+    path:     /{id}/new
+    defaults: { _controller: "OrionEventBundle:User_Billet:new" }
+    
+user_billet_ajout:
+    path:     /{id}/ajout
+    defaults: { _controller: "OrionEventBundle:User_Billet:ajout" }    
+    
+user_billet_create:
+    path:     /create
+    defaults: { _controller: "OrionEventBundle:User_Billet:create" }
+    requirements: { _method: post }
+
+user_billet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "OrionEventBundle:User_Billet:edit" }
+
+user_billet_update:
+    path:     /{id}/update
+    defaults: { _controller: "OrionEventBundle:User_Billet:update" }
+    requirements: { _method: post|put }
+user_billet_update2:
+    path:     /{id}/update
+    defaults: { _controller: "OrionEventBundle:User_Billet:update2" }
+    requirements: { _method: post|put }
+
+user_billet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OrionEventBundle:User_Billet:delete" }
+    requirements: { _method: post|delete }
+    
+user_billet_search:
+    path: /search
+    defaults: { _controller: "OrionEventBundle:User_Billet:search" }
+
+user_billet_par_event:
+    path:     /{id}/eventbillets
+    defaults: { _controller: "OrionEventBundle:User_Billet:indexParEvent" }    
+

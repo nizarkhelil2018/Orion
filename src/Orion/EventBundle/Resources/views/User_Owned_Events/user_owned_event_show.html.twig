@@ -1,0 +1,117 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+{% block module %}
+    {{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-fw fa-desktop"></i> {{ 'Display'|trans }}
+{% endblock operation %}
+{% block body -%}
+    <div class="text-center" style="color: blue">
+        <p>
+        <h1>
+            {{entity.titre}}
+        </h1>
+    </p>
+</div>
+<table class="table table-condensed">
+
+    <tbody align="left">
+        <tr>
+            <th class="text-info col-sm-2">Id</th>
+            <td>{{ entity.id }}</td>
+            <td rowspan="10"class="col-sm-3"><img src="{{ asset('uploads/' ~ entity.path) }}" class="img-responsive img-rounded"></td>   
+        </tr>
+
+
+        <tr>
+            <th class="text-info">{{ 'Title'|trans }}</th>
+            <td>{{ entity.titre }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Description'|trans }}</th>
+            <td class="text-justify">{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'State'|trans }}</th>
+            <td>
+                {% if entity.etat == 2 %}<strong class="text-success str">{{ 'Public'|trans }}</strong>
+                {% elseif entity.etat == 1 %}<strong class="text-primary">{{ 'Registred'|trans }}</strong>
+                {% elseif entity.etat ==0 %} <strong class="text-danger">{{ 'Cancelled'|trans }}</strong>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Theme'|trans }}</th>
+            <td>{{ entity.theme }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Type'|trans }}</th>
+            <td>{{ entity.type }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Creation date'|trans }}</th>
+            <td>{{ entity.dateCreation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateCreation|date('H:i') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Starting Schedule'|trans }}</th>
+            <td>{{ entity.horaireDebut|date('d/m/y') }} {{ 'at'|trans }} {{ entity.horaireDebut|date('H:i') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Ending Schedule'|trans }}</th>
+            <td>{{ entity.HoraireFin|date('d/m/y') }} {{ 'at'|trans }} {{ entity.HoraireFin|date('H:i') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Time zone'|trans }}</th>
+            <td>GMT + {{ entity.fuseauHoraire }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Address'|trans }}</th>
+            <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="table-responsive" >
+
+    <tbody align="right">
+    <th class="col-sm-3">   
+        <a href="{{ path('user_owned_event_edit', { 'id': entity.id }) }}">
+            <button type="button" class="btn btn-default fa fa-wrench text-warning"> {{ 'Edit'|trans }}</button>
+        </a>
+    </th>
+    
+    
+    <th class="text-danger btn-group-sm">
+        {{ form_start(delete_form) }}
+
+        <a href="{{ path('user_owned_event_search') }}" style="color: red">
+
+        </a>           
+        {{ form_end(delete_form) }}
+    </th>
+
+    <th class="col-sm-3">
+    </th>
+    <th class="col-sm-3 text-center">
+        <a href="{{ path('user_owned_events_all') }}">
+            <button type="button" class="btn btn-default fa fa-list"> {{ 'All My Events'|trans }}</button>
+        </a>
+
+    </th>
+    <th>
+        <a href="{{ path('user_billet_ajout', { 'id': entity.id })}}">
+                                            <button type="button" class="btn btn-default fa fa-ticket"> {{ 'Create a Ticket'|trans }}</button>
+                                        </a> 
+    </th>
+    
+</tbody>
+</table>
+<ul class="pager">
+    <li class="previous"><a href="{{ path('user_owned_event_show', { 'id': entity.id - 1 }) }}">{{ 'Previous Event'|trans }}</a></li>
+    <li class="next"><a href="{{ path('user_owned_event_show', { 'id': entity.id + 1 }) }}">{{ 'Next Event'|trans }}</a></li>
+</ul>
+
+    
+{% endblock %}

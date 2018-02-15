@@ -1,0 +1,93 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-plus"></i> {{ 'Add'|trans }}
+{% endblock operation %}
+{% block body -%}
+<h2 style="color: silver" class="text-center"><b>{{ 'Add'|trans }} {{ 'Event'|trans }}</b></h2>
+<table class="table-responsive" >
+        {{ form_start(form) }}  
+    <form class="well" action="{{ path('user_owned_event_new') }}" method="post" {{ form_enctype(form) }}>
+        <input type="hidden" name="_method" value="POST" />
+        <table class="table table-condensed table-striped">
+            <tr>                   
+                <th class="text-info">{{ 'Title'|trans }}</th>
+                <td>{{ form_widget(form.titre) }} </td>
+            </tr>                
+            <tr>                   
+                <th class="text-info">{{ 'Description'|trans }}</th>
+                <td class="col-sm-9">{{ form_widget(form.description) }} </td>
+            </tr>
+            <tr>                   
+                <th class="text-info">{{ 'State'|trans }}</th>
+                <td>{{ form_widget(form.etat) }} </td>
+            </tr>
+            <tr>                   
+                <th class="text-info">{{ 'Theme'|trans }}</th>
+                <td>{{ form_widget(form.theme) }} </td>
+            </tr>
+            <tr>                   
+                <th class="text-info">{{ 'Type'|trans }}</th>
+                <td>{{ form_widget(form.type) }} </td>
+            </tr>
+            <tr>                   
+                <th class="text-info">{{ 'Country'|trans }}</th>
+                <td>{{ form_widget(form.pays) }} </td>
+            </tr> 
+            <tr>                   
+                <th class="text-info">{{ 'City'|trans }}</th>
+                <td>{{ form_widget(form.ville) }} </td>
+            </tr> 
+            <tr>                   
+                <th class="text-info">{{ 'Zip Code'|trans }}</th>
+                <td>{{ form_widget(form.codePostal) }} </td>
+            </tr>
+            <tr>                   
+                <th class="text-info">{{ 'Address'|trans }}</th>
+                <td>{{ form_widget(form.adresse) }} </td>
+            </tr> 
+
+            <tr>                   
+                <th class="text-info">{{ 'Starting Schedule'|trans }}</th>
+                <td>{{ form_widget(form.horaireDebut) }} </td>
+            </tr>
+            <input type="hidden" value="{{ entity.horairedebut|date('Y-m-d H:i:s') }}">
+            <tr>                   
+                <th class="text-info">{{ 'Ending Schedule'|trans }}</th>
+                <td>{{ form_widget(form.HoraireFin) }} </td>
+            </tr>
+            <input type="hidden" value="{{ entity.horairefin|date('Y-m-d H:i:s') }}">
+            <tr>                   
+                <th class="text-info">{{ 'Time zone'|trans }}</th>
+                <td>GMT + {{ form_widget(form.fuseauHoraire) }} </td>
+            </tr>
+
+            <tr>                   
+                <th class="text-info">{{ 'Creation date'|trans }}</th>
+                <td>{{ form_widget(form.dateCreation) }} </td>
+            </tr>
+            <input type="hidden" value="{{ entity.datecreation|date('Y-m-d H:i:s') }}">
+            <tr>                   
+                <th class="text-info">{{ 'Picture'|trans }}</th>
+                <td>{{ form_widget(form.file) }} </td>
+            </tr>
+        </table>
+        <table>
+                {{ form_widget(form._token) }}
+            <th class="col-sm-3">   
+                <a href="{{ path('admin_theme_index') }}">
+                    <button type="submit" class="btn btn-group-sm btn-success fa fa-plus"> {{ 'Create'|trans }}</button>
+                </a>
+            </th>
+    </form>
+    <th>
+        <a href="{{ path('user_owned_events_all') }}">
+            <button type="button" class="btn btn-group-sm fa fa-list"> {{ 'All My Events'|trans }}</button>
+        </a>
+    </th>              
+
+</table>       
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'OrionEventBundle::layout_front_user.html.twig' %}
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-ticket"></i> {{ 'Reservations List'|trans }}
+{% endblock operation %}
+{% block body -%}  
+<h2 class="text-center text-primary"><b>{{ 'Reservations List'|trans }}</b></h2>
+{#{{evenement}}#}
+{#{{id}}#}
+<table class="table table-bordered">
+    <thead>
+        <tr class="info">
+    <th>{{'Reserved By'|trans}}</th>
+    <th>{{'Ticket'|trans}}</th>
+    <th>{{'Number'|trans}}</th>
+    <th>{{'Reservation date'|trans}}</th>
+        </tr>
+</thead>
+<tbody>
+    {% set foo = -3 %}
+{% for entity in entities %}
+    {% if entity.billet.evenement.organisateur == app.user and entity.billet.evenement.id == id %}
+        {% if foo != 1%}
+        {% set evenement = entity.billet.evenement.titre%}   
+        {% set  foo= 1%}
+<h4 class="text-center">{{'Event'|trans}} : <b class="text-blue"> {{evenement}}</b></h4>
+        {%endif%}
+    <tr>
+    <td>{{entity.utilisateur}}</td> 
+    <td>{{entity.billet.libelle}} </td> 
+    <td>{{entity.number}}</td> 
+    <td>{{ entity.dateReservation|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.dateReservation|date('H:i') }}</td>
+    <tr>
+
+{% endif %}
+{% endfor %}
+<tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,36 @@
+<html >
+    <head>
+        <meta charset="UTF-8">
+        <title>Orion</title>   
+        <link href="{{ asset('bootstrap-3.3.6-dist/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('bootstrap-3.3.6-dist/css/style.css')}}" rel="stylesheet">
+    </head>
+
+    <body>
+        <div>
+
+            
+            
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} 
+                            <a href="{{ path('fos_user_security_logout')}}" class="connexion btn btn-primary">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login')}}" class="linked text-primary">{{ 'layout.login'|trans({}, 'FOSUserBundle') }} |</a>
+                            <a href="{{ path('fos_user_registration_register')}}" class="linked text-success">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}
+        </div>
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </body>

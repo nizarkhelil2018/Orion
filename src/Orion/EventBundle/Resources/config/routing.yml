@@ -1,0 +1,76 @@
+orion_event_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: OrionEventBundle:Default:index }   
+
+
+    
+#########################"user###################"    
+orion_event_user_billet:
+    resource: "@OrionEventBundle/Resources/config/routing/user_billet.yml"
+    prefix:   /user_billet
+
+orion_event_user_event:
+    resource: "@OrionEventBundle/Resources/config/routing/user_event.yml"
+    prefix:   /user_event
+
+orion_event_user_owned_events:
+    resource: "@OrionEventBundle/Resources/config/routing/user_owned_events.yml"
+    prefix:   /user_owned_events
+    
+orion_event_admin_event:
+    resource: "@OrionEventBundle/Resources/config/routing/admin_event.yml"
+    prefix:   /admin_event
+    
+orion_event_admin_theme:
+    resource: "@OrionEventBundle/Resources/config/routing/admin_theme.yml"
+    prefix:   /admin_theme
+
+orion_event_admin_type:
+    resource: "@OrionEventBundle/Resources/config/routing/admin_type.yml"
+    prefix:   /admin_type
+
+orion_event_admin_billet:
+    resource: "@OrionEventBundle/Resources/config/routing/admin_billet.yml"
+    prefix:   /admin_billet
+    
+orion_event_index:
+    resource: "@OrionEventBundle/Resources/config/routing/index.yml"
+    prefix:   /index
+
+orion_event_homepage:
+    path:     /hello
+    defaults: { _controller: OrionEventBundle:Default:index }
+    
+
+orion_event_user_home:
+    path:     /acceuil
+    defaults: { _controller: "OrionEventBundle:Default:indexUser" }
+
+orion_event_admin_home:
+    path:     /acceuil_admin
+    defaults: { _controller: "OrionEventBundle:Default:index" }
+
+orion_event_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: OrionEventBundle:Default:index }
+    
+orion_event_home:
+    path:     /home_page
+    defaults: { _controller: "OrionEventBundle:Default:redirect" }
+    
+    
+orion_event_user_home:
+    path:     /home_page_user
+    defaults: { _controller: "OrionEventBundle:Default:redirect" }
+
+
+orion_event_user_reservation:
+    resource: "@OrionEventBundle/Resources/config/routing/user_reservation.yml"
+    prefix:   /user_reservation
+
+     
+orion_event_admin_home:
+    path:     /home_page_admin
+    defaults: { _controller: "OrionEventBundle:Default:redirect" }
+
+

@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- Categories -->
+            <trans-unit id="c1">
+                <source>orion.forum.category.removeall.label</source>
+                <target>Delete all forums in the category?</target>
+            </trans-unit>
+            <trans-unit id="c2">
+                <source>orion.forum.category.created</source>
+                <target>The category was successfully created.</target>
+            </trans-unit>
+            <trans-unit id="c3">
+                <source>orion.forum.category.edit</source>
+                <target>The category was successfully updated.</target>
+            </trans-unit>
+            <trans-unit id="c4">
+                <source>orion.forum.category.movedforums</source>
+                <target>The forums were successfully moved.</target>
+            </trans-unit>
+            <trans-unit id="c5">
+                <source>orion.forum.category.delete</source>
+                <target>The category was successfully removed.</target>
+            </trans-unit>
+            <trans-unit id="c6">
+                <source>orion.forum.category.form.title</source>
+                <target>Category management form</target>
+            </trans-unit>
+            <trans-unit id="c7">
+                <source>orion.forum.category.form.name</source>
+                <target>Category name.</target>
+            </trans-unit>
+            <trans-unit id="c8">
+                <source>orion.forum.category.addforum</source>
+                <target>Add a forum</target>
+            </trans-unit>
+            <trans-unit id="c9">
+                <source>orion.forum.category.position</source>
+                <target>Position in results.</target>
+            </trans-unit>
+            <trans-unit id="c10">
+                <source>orion.forum.category.permitions</source>
+                <target>Read rights.</target>
+            </trans-unit>
+            <trans-unit id="c11">
+                <source>orion.forum.category.form.deletetitle</source>
+                <target>Remove category form.</target>
+            </trans-unit>
+            <trans-unit id="c12">
+                <source>orion.forum.category.form.movedto</source>
+                <target>Move forums to:</target>
+            </trans-unit>
+            <trans-unit id="c13">
+                <source>orion.forum.category.form.purge</source>
+                <target>Check to remove all forums of this category.</target>
+            </trans-unit>
+            <trans-unit id="c14">
+                <source>orion.forum.category.manage</source>
+                <target>Manage categories and forums.</target>
+            </trans-unit>
+            <trans-unit id="c15">
+                <source>orion.forum.category.createnew</source>
+                <target>+ Create a category +</target>
+            </trans-unit>
+            <trans-unit id="c16">
+                <source>orion.forum.category.countforum</source>
+                <target>Number of forums in the category:</target>
+            </trans-unit>
+            <!-- Forums -->
+            <trans-unit id="f1">
+                <source>orion.forum.forum.incat</source>
+                <target>Listing forum in</target>
+            </trans-unit>
+            <trans-unit id="f2">
+                <source>orion.forum.forum.delete</source>
+                <target>The forum was successfully deleted.</target>
+            </trans-unit>
+            <trans-unit id="f3">
+                <source>orion.forum.forum.removeall.label</source>
+                <target>Delete all topics in forum?</target>
+            </trans-unit>
+            <trans-unit id="f4">
+                <source>orion.forum.forum.created</source>
+                <target>The forum was successfully created.</target>
+            </trans-unit>			
+            <trans-unit id="f5">
+                <source>orion.forum.forum.edit</source>
+                <target>The forum was successfully updated.</target>
+            </trans-unit>
+            <trans-unit id="f6">
+                <source>orion.forum.forum.movedtopics</source>
+                <target>The topics were successfully moved.</target>
+            </trans-unit>
+            <trans-unit id="f7">
+                <source>orion.forum.forum.form.title</source>
+                <target>Forum management form</target>
+            </trans-unit>
+            <trans-unit id="f8">
+                <source>orion.forum.forum.form.name</source>
+                <target>Forum name.</target>
+            </trans-unit>
+            <trans-unit id="f9">
+                <source>orion.forum.forum.form.description</source>
+                <target>Forum Description.</target>
+            </trans-unit>
+            <trans-unit id="f10">
+                <source>orion.forum.forum.form.image</source>
+                <target>Image attached to the forum.</target>
+            </trans-unit>
+            <trans-unit id="f11">
+                <source>orion.forum.forum.form.category</source>
+                <target>Select category:</target>
+            </trans-unit>
+            <trans-unit id="f12">
+                <source>orion.forum.forum.form.deletetitle</source>
+                <target>Form to delete a forum.</target>
+            </trans-unit>
+            <trans-unit id="f13">
+                <source>orion.forum.forum.form.movedto</source>
+                <target>Move topics to:</target>
+            </trans-unit>
+            <trans-unit id="f14">
+                <source>orion.forum.forum.form.purge</source>
+                <target>Check to completely delete the forum's topics.</target>
+            </trans-unit>
+            <trans-unit id="f15">
+                <source>orion.forum.deleted.user</source>
+                <target>Deleted user</target>
+            </trans-unit>
+            <!-- Topics -->
+            <trans-unit id="t1">
+                <source>orion.forum.topic.create</source>
+                <target>The topic was successfully created.</target>
+            </trans-unit>
+            <trans-unit id="t2">
+                <source>orion.forum.topic.delete</source>
+                <target>The topic was successfully removed.</target>
+            </trans-unit>
+            <trans-unit id="t3">
+                <source>orion.forum.topic.edit</source>
+                <target>The topic was successfully updated.</target>
+            </trans-unit>
+            <trans-unit id="t4">
+                <source>orion.forum.topic.recent</source>
+                <target>Recent topics.</target>
+            </trans-unit>
+            <trans-unit id="t5">
+                <source>orion.forum.topic.new</source>
+                <target>Create a topic</target>
+            </trans-unit>
+            <trans-unit id="t6">
+                <source>orion.forum.topic.title</source>
+                <target>Title of the topic:</target>
+            </trans-unit>
+            <!-- Posts -->
+            <trans-unit id="p1">
+                <source>orion.forum.warning.preview</source>
+                <target>Please note this post is in preview mode, remember to validate it before leaving.</target>
+            </trans-unit>
+            <trans-unit id="p2">
+                <source>orion.forum.post.create</source>
+                <target>The post was successfully created.</target>
+            </trans-unit>
+            <trans-unit id="p3">
+                <source>orion.forum.post.edit</source>
+                <target>The post was successfully updated.</target>
+            </trans-unit>
+            <trans-unit id="p4">
+                <source>orion.forum.post.delete</source>
+                <target>The post was successfully removed.</target>
+            </trans-unit>
+            <trans-unit id="p5">
+                <source>orion.forum.post.deleteall</source>
+                <target>All posts in topic were successfully removed.</target>
+            </trans-unit>
+            <trans-unit id="p6">
+                <source>orion.forum.post.recent</source>
+                <target>Recent posts.</target>
+            </trans-unit>
+            <trans-unit id="p7">
+                <source>orion.forum.post.want</source>
+                <target>Do you really want to remove that post?</target>
+            </trans-unit>
+            <trans-unit id="p8">
+                <source>orion.forum.post.aged</source>
+                <target>Warning, this topic is pretty old. Think twice before posting, it may be more appropriate to create a new topic.</target>
+            </trans-unit>
+            <trans-unit id="p9">
+                <source>orion.forum.post.confirmfirst</source>
+                <target>Warning! This is the first post of the topic. Removing it will erase the entire topic!</target>
+            </trans-unit>
+            <trans-unit id="p10">
+                <source>orion.forum.post.editpost</source>
+                <target>Edit a post</target>
+            </trans-unit>
+            <!-- Labels -->
+            <trans-unit id="l1">
+                <source>orion.forum.label.mark.solved</source>
+                <target>The topic has been marked as resolved.</target>
+            </trans-unit>
+            <trans-unit id="l2">
+                <source>orion.forum.label.unmark.solved</source>
+                <target>The subject is no longer marked as resolved.</target>
+            </trans-unit>
+            <trans-unit id="l3">
+                <source>orion.forum.label.mark.pinned</source>
+                <target>The subject has been pinned.</target>
+            </trans-unit>
+            <trans-unit id="l4">
+                <source>orion.forum.label.unmark.pinned</source>
+                <target>The subject has been unpinned.</target>
+            </trans-unit>
+            <trans-unit id="l5">
+                <source>orion.forum.label.mark.closed</source>
+                <target>The topic has been closed.</target>
+            </trans-unit>
+            <trans-unit id="l6">
+                <source>orion.forum.label.unmark.closed</source>
+                <target>The topic has been unclosed.</target>
+            </trans-unit>
+            <trans-unit id="l7">
+                <source>orion.forum.label.solved</source>
+                <target>Resolved</target>
+            </trans-unit>
+            <trans-unit id="l8">
+                <source>orion.forum.label.closed</source>
+                <target>Closed.</target>
+            </trans-unit>
+            <trans-unit id="l9">
+                <source>orion.forum.label.pinned</source>
+                <target>Pinned.</target>
+            </trans-unit>
+            <trans-unit id="l10">
+                <source>orion.forum.label.issolved</source>
+                <target>Topic resolved</target>
+            </trans-unit>
+            <trans-unit id="l11">
+                <source>orion.forum.label.isclosed</source>
+                <target>Topic closed</target>
+            </trans-unit>
+            <trans-unit id="l12">
+                <source>orion.forum.label.ispinned</source>
+                <target>Topic pinned</target>
+            </trans-unit>
+            <!-- Divers -->
+            <trans-unit id="d1">
+                <source>orion.forum.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="d2">
+                <source>orion.forum.remove</source>
+                <target>Remove</target>
+            </trans-unit>
+            <trans-unit id="d3">
+                <source>orion.forum.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="d4">
+                <source>orion.forum.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="d5">
+                <source>orion.forum.topics</source>
+                <target>Topics</target>
+            </trans-unit>
+            <trans-unit id="d6">
+                <source>orion.forum.position</source>
+                <target>Position</target>
+            </trans-unit>
+            <trans-unit id="d7">
+                <source>orion.forum.action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="d8">
+                <source>orion.forum.categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="d9">
+                <source>orion.forum.forums</source>
+                <target>Forums</target>
+            </trans-unit>
+            <trans-unit id="d10">
+                <source>orion.forum.by</source>
+                <target>by</target>
+            </trans-unit>
+            <trans-unit id="d11">
+                <source>orion.forum.on</source>
+                <target>on</target>
+            </trans-unit>
+            <trans-unit id="d12">
+                <source>orion.forum.at</source>
+                <target>at</target>
+            </trans-unit>
+            <trans-unit id="d13">
+                <source>orion.forum.location</source>
+                <target>Location:</target>
+            </trans-unit>
+            <trans-unit id="d14">
+                <source>orion.forum.see</source>
+                <target>See</target>
+            </trans-unit>
+            <trans-unit id="d15">
+                <source>orion.forum.forumlist</source>
+                <target>Forums List</target>
+            </trans-unit>
+            <trans-unit id="d16">
+                <source>orion.forum.lastpostby</source>
+                <target>Last post by</target>
+            </trans-unit>
+            <trans-unit id="d17">
+                <source>orion.forum.null</source>
+                <target>No reply. Please create content.</target>
+            </trans-unit>
+            <trans-unit id="d18">
+                <source>orion.forum.posts</source>
+                <target>posts</target>
+            </trans-unit>
+            <trans-unit id="d19">
+                <source>orion.forum.post</source>
+                <target>post</target>
+            </trans-unit>
+            <trans-unit id="d20">
+                <source>orion.forum.confirm</source>
+                <target>Confirmation required</target>
+            </trans-unit>
+            <trans-unit id="d21">
+                <source>orion.forum.cancel</source>
+                <target>Cancel</target>
+            </trans-unit>
+            <trans-unit id="d22">
+                <source>orion.forum.valid</source>
+                <target>Valid</target>
+            </trans-unit>
+            <trans-unit id="d23">
+                <source>orion.forum.quote</source>
+                <target>Quote</target>
+            </trans-unit>
+            <trans-unit id="d24">
+                <source>orion.forum.reply</source>
+                <target>Reply</target>
+            </trans-unit>
+            <trans-unit id="d25">
+                <source>orion.forum.btn.submit</source>
+                <target>Submit</target>
+            </trans-unit>
+            <trans-unit id="d26">
+                <source>Preview</source>
+                <target>Preview</target>
+            </trans-unit>
+            <trans-unit id="d27">
+                <source>Previous</source>
+                <target>Previous</target>
+            </trans-unit>
+            <trans-unit id="d28">
+                <source>Next</source>
+                <target>Next</target>
+            </trans-unit>
+            <trans-unit id="d29">
+                <source>orion.forum.choice</source>
+                <target>Select a forums</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

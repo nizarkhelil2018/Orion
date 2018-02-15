@@ -1,0 +1,66 @@
+user_owned_events_all:
+    path:     /all
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:myEvents" } 
+    
+user_owned_events_published:
+    path:     /published
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:myPublishedEvents" }
+    
+user_owned_events_cancelled:
+    path:     /cancelled
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:myCancelledEvents" }
+    
+user_owned_events_registred:
+    path:     /registred
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:myRegistredEvents" }
+    
+user_owned_event_publish:
+    path:     /{id}/publish
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:publish" }
+    
+user_owned_event_hide:
+    path:     /{id}/hide
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:hide" }
+    
+user_owned_event_search:
+    path: /search
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:search" }  
+    
+user_owned_event_cancel:
+    path:     /{id}/cancel
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:cancel" }  
+    
+user_owned_event_show:
+    path:     /{id}/show
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:show" }
+    
+user_owned_event_new:
+    path:     /new
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:new" }
+    
+user_owned_event_create:
+    path:     /create
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:create" }
+    methods:  POST
+    
+user_owned_event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:edit" }
+    
+user_owned_event_update:
+    path:     /{id}/update
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:update" }
+    methods:  [POST, PUT]
+    
+user_owned_event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:delete" }
+    methods:  [POST, DELETE, GET]   
+    
+user_owned_event_edit_State:
+    path:     /{id}/editState
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:editState" }
+    
+user_owned_event_booking_list:
+    path:     /{id}/bookingList
+    defaults: { _controller: "OrionEventBundle:User_Owned_Events:bookingList" }

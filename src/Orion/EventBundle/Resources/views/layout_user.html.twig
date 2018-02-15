@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Orion | Blank Page</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link href="{{ asset('AdminLTE-2.3.3_Blue Light/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <!-- Font Awesome -->        
+        <link href="{{ asset('AdminLTE-2.3.3_Blue Light/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+        <!-- Ionicons -->
+        <link href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')}}" rel="stylesheet">
+        <!-- Theme style -->
+        <link href="{{ asset('AdminLTE-2.3.3_Blue Light/dist/css/AdminLTE.min.css')}}" rel="stylesheet">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link href="{{ asset('AdminLTE-2.3.3_Blue Light/dist/css/skins/_all-skins.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('sweetalert.css')}}" rel="stylesheet">
+     {% block head %}
+      {% endblock head %}
+    </head>
+    <body class="hold-transition skin-blue-light sidebar-mini">
+        <!-- Site wrapper -->
+        <div class="wrapper">
+            <header class="main-header">
+                <!-- Logo -->
+
+                <a href="{{ path('orion_event_home') }}" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>O</b>rion</span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>ORION</b></span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{{ asset('AdminLTE-2.3.3_Blue Light/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image" />
+                                    <span class="hidden-xs">{{ app.user.username |capitalize}}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">                                        
+                                        <img src="{{ asset('AdminLTE-2.3.3_Blue Light/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image"/>    
+                                        <p>
+                                            {{ app.user.username |capitalize}}
+                                        </p>
+                                    </li>
+
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat">{{ 'Profile'|trans }}</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">{{ 'Sign out'|trans }}</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Control Sidebar Toggle Button -->
+                            <li>
+                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- =============================================== -->
+
+            <!-- Left side column. contains the sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="{{ asset('AdminLTE-2.3.3_Blue Light/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image" />                            
+                        </div>
+                        <div class="pull-left info">
+                            <p>{{ app.user.username |capitalize}}</p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> {{ 'Online'|trans }}</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="header">Orion</li>
+
+                        <li class="treeview">
+                            <a href="Multilevel">
+                                <i class="fa fa-lg fa-navicon text-red"></i> <span>Orion Event</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <!------------------------------Gestion des Evénements-------------------------->
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-th fa text-aqua"></i>
+                                        <span>{{ 'Events Management'|trans }}</span>
+                                        <span class="fa fa-angle-left pull-right"></span>
+                                    </a>
+
+                                    <ul class="treeview-menu">   
+                                        <li><a href="{{ path('user_event_index') }}"><i class="fa fa-list"></i> {{ 'All Events'|trans }}</a></li>
+                                        <li><a href="{{ path('user_event_search') }}"><i class="fa fa-search"></i> {{ 'Events Search'|trans }}</a></li>
+
+                                    </ul>
+                                </li>
+                                <!------------------------------Mes Evénements-------------------------->    
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-th-large fa-lg text-navy"></i>
+                                        <span> {{ 'My Events'|trans }}</span>
+                                        <span class="fa fa-angle-left pull-right"></span>
+                                    </a>
+                                    <ul class="treeview-menu">   
+                                        <li><a href="{{ path('user_owned_events_all') }}"><i class="fa fa-list text-lime"></i> {{ 'All My Events'|trans }}</a></li>
+                                        <li><a href="{{ path('user_owned_events_published') }}"><i class="fa fa-check text-success"></i> {{ 'My Public Events'|trans }}</a></li>
+                                        <li><a href="{{ path('user_owned_events_cancelled') }}"><i class="fa fa-remove text-danger"></i> {{ 'My Cancelled Events'|trans }}</a></li>
+                                        <li><a href="{{ path('user_owned_events_registred') }}"><i class="fa fa-save text-blue"></i> {{ 'My Registred Events'|trans }}</a></li>
+                                        <li><a href="{{ path('user_owned_event_search') }}"><i class="fa fa-search text-orange"></i> {{ 'Events Search'|trans }}</a></li>
+                                        <li><a href="{{ path('user_owned_event_new') }}"><i class="fa fa-plus text-gray"></i> {{ 'Create an Event'|trans }}</a></li>                                
+                                    </ul>
+                                </li>
+
+                                <!------------------------------Mes Billets-------------------------->
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-ticket fa-lg text-orange"></i>
+                                        <span>{{ 'My Tickets'|trans }}</span>
+                                        <span class="fa fa-angle-left pull-right"></span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{ path('user_billet_index') }}"><i class="fa fa-list text-lime"></i> {{ 'All My Tickets'|trans }}</a></li>
+                                        <li><a href="{{ path('user_billet_search') }}"><i class="fa fa-search text-orange"></i> {{ 'Tickets Search'|trans }}</a></li>
+                                        <li><a href="#"><i class="fa fa-plus"></i> {{ 'Create a Ticket'|trans }}</a></li>
+                                    </ul>
+                                </li>
+
+                                <!------------------------------Mes Réservations-------------------------->
+                                <li>
+                                    <a href="{{path ('user_my_reservation')}}">
+                                        <i class="fa fa-shopping-cart fa-lg text-gray"></i>
+                                        <span>{{ 'My Reservations'|trans }}</span>
+                                        <span class="fa fa-angle-left pull-right"></span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <!-------------------Orion Forum ------------------>
+                        <li class="treeview">
+                            <a href=" {{path ('discutea_forum_homepage')}}">
+
+                                <i class="fa fa-lg fa-indent text-green"></i> <span>Orion Forum</span>
+                               {# <i class="fa fa-angle-left pull-right"></i>#}
+                            </a>
+                           {# <ul class="treeview-menu">
+                                <!------------------------------Gestion des Evénements-------------------------->
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-th text-aqua"></i>
+                                        <span>{{ 'Events Management'|trans }}</span>
+                                        <span class="fa fa-angle-left pull-right"></span>
+                                    </a>
+
+                                    <ul class="treeview-menu">   
+                                <li><a href="{{ path('user_event_index') }}"><i class="fa fa-list"></i> {{ 'All Events'|trans }}</a></li>
+                                <li><a href="{{ path('user_event_search') }}"><i class="fa fa-search"></i> {{ 'Events Search'|trans }}</a></li>
+                                                                
+                            </ul>
+                                </li>
+                                <!------------------------------Mes Evénements-------------------------->    
+                                <li>
+                                    <a href="#">
+                                <i class="fa fa-th-large fa-lg text-navy"></i>
+                                <span> {{ 'My Events'|trans }}</span>
+                                <span class="fa fa-angle-left pull-right"></span>
+                            </a>
+                                    <ul class="treeview-menu">   
+                                <li><a href="{{ path('user_owned_events_all') }}"><i class="fa fa-list text-lime"></i> {{ 'All My Events'|trans }}</a></li>
+                                <li><a href="{{ path('user_owned_events_published') }}"><i class="fa fa-check text-success"></i> {{ 'My Public Events'|trans }}</a></li>
+                                <li><a href="{{ path('user_owned_events_cancelled') }}"><i class="fa fa-remove text-danger"></i> {{ 'My Cancelled Events'|trans }}</a></li>
+                                <li><a href="{{ path('user_owned_events_registred') }}"><i class="fa fa-save text-blue"></i> {{ 'My Registred Events'|trans }}</a></li>
+                                <li><a href="{{ path('user_owned_event_search') }}"><i class="fa fa-search text-orange"></i> {{ 'Events Search'|trans }}</a></li>
+                                <li><a href="{{ path('user_owned_event_new') }}"><i class="fa fa-plus text-gray"></i> {{ 'Create an Event'|trans }}</a></li>                                
+                            </ul>
+                                </li>
+  
+                                <!------------------------------Mes Billets-------------------------->
+                                <li>
+                                    <a href="#">
+                                <i class="fa fa-ticket fa-lg text-orange"></i>
+                                <span>{{ 'My Tickets'|trans }}</span>
+                                <span class="fa fa-angle-left pull-right"></span>
+                            </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{ path('user_billet_index') }}"><i class="fa fa-list text-lime"></i> {{ 'All My Tickets'|trans }}</a></li>
+                                <li><a href="{{ path('user_billet_search') }}"><i class="fa fa-search text-orange"></i> {{ 'Tickets Search'|trans }}</a></li>
+                                <li><a href="#"><i class="fa fa-plus"></i> {{ 'Create a Ticket'|trans }}</a></li>
+                                    </ul>
+                                </li>
+
+                                
+                            </ul>
+                        </li>
+                        
+
+                    </ul>#}
+                            </section>
+                            <!-- /.sidebar -->
+                            </aside>
+
+                            <!-- =============================================== -->
+
+                            <!-- Content Wrapper. Contains page content -->
+                            <div class="content-wrapper">
+                                <!-- Content Header (Page header) -->
+                                <section class="content-header">
+
+                                </section>
+
+                                <!-- Main content -->
+                                <section class="content">
+
+                                    <!-- Default box -->
+                                    <div class="box">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <h1 class="page-header">
+                            {% block module %}
+                            {% endblock module %}
+
+                                                    </h1>
+                                                    <ol class="breadcrumb">
+                                                        <li class="active">
+                                {% block operation %}
+                                {% endblock operation %}
+
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                            {% block body %}
+                            {% endblock body %}
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </section>
+                                <!-- /.content -->
+                            </div>
+                            <!-- /.content-wrapper -->
+
+                            <footer class="main-footer">
+                                <div class="pull-right hidden-xs">
+                                    <b>Esprit TECH</b>
+                                </div>
+                                <strong>{{ 'Copyright © 2017'|trans }} <a href="http://orion.com">Orion</a>.</strong> {{ 'All rights are reserved.'|trans }}
+                            </footer>
+
+                            <!-- Control Sidebar -->
+
+
+                            <!-- /.control-sidebar -->
+                            <!-- Add the sidebar's background. This div must be placed
+                                 immediately after the control sidebar -->
+                            <div class="control-sidebar-bg"></div>
+                            </div>
+                            <!-- ./wrapper -->
+                            <!-- jQuery 2.2.0 -->
+                            <script src="{{ asset('AdminLTE-2.3.3_Blue Light/plugins/jQuery/jQuery-2.2.0.min.js')}}"></script>
+                            <!-- Bootstrap 3.3.6 -->
+                            <script src="{{ asset('AdminLTE-2.3.3_Blue Light/bootstrap/js/bootstrap.min.js')}}"></script>
+                            <!-- SlimScroll -->
+                            <script src="{{ asset('AdminLTE-2.3.3_Blue Light/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
+                            <!-- FastClick -->
+                            <script src="{{ asset('AdminLTE-2.3.3_Blue Light/plugins/fastclick/fastclick.js')}}"></script>
+                            <!-- AdminLTE App -->
+                            <script src="{{ asset('AdminLTE-2.3.3_Blue Light/dist/js/app.min.js')}}"></script>
+                            <!-- AdminLTE for demo purposes -->
+                            <script src="{{ asset('AdminLTE-2.3.3_Blue Light/dist/js/demo.js')}}"></script>
+                            <script src="{{ asset('sweetalert.min.js')}}"></script>
+                            </body>
+                            </html>

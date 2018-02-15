@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Symfony2 is great</source>
+                <target>J'aime Symfony2</target>
+            </trans-unit>
+            <trans-unit id="Welcome Message">
+                <source>Hello</source>
+                <target>Bonjour</target>
+            </trans-unit>
+            
+            <trans-unit id="Events Managemen">
+                <source>Events Management</source>
+                <target>Gestion des Evénements</target>
+            </trans-unit>            
+            <trans-unit id="All Events">
+                <source>All Events</source>
+                <target>Tous les Evénements</target>
+            </trans-unit>
+            <trans-unit id="Events Search">
+                <source>Events Search</source>
+                <target>Rechercher Evénements</target>
+            </trans-unit>
+            <trans-unit id="Create an Event">
+                <source>Create an Event</source>
+                <target>Créer un Evénement</target>
+            </trans-unit>
+            <trans-unit id="Themes Management">
+                <source>Themes Management</source>
+                <target>Gestion des Thèmes</target>
+            </trans-unit>
+            <trans-unit id="All Themes">
+                <source>All Themes</source>
+                <target>Tous les Thèmes</target>
+            </trans-unit>
+            <trans-unit id="Themes Search">
+                <source>Themes Search</source>
+                <target>Rechercher Thèmes</target>
+            </trans-unit>
+            <trans-unit id="Create a Theme">
+                <source>Create a Theme</source>
+                <target>Créer un Thème</target>
+            </trans-unit>
+            <trans-unit id="Types Management">
+                <source>Types Management</source>
+                <target>Gestion des Types</target>
+            </trans-unit>
+            <trans-unit id="All Types">
+                <source>All Types</source>
+                <target>Tous les Types</target>
+            </trans-unit>
+            <trans-unit id="Types Search">
+                <source>Types Search</source>
+                <target>Rechercher Types</target>
+            </trans-unit>
+            <trans-unit id="Create a Type">
+                <source>Create a Type</source>
+                <target>Créer un Type</target>
+            </trans-unit>
+            <trans-unit id="Tickets Management">
+                <source>Tickets Management</source>
+                <target>Gestion des Billets</target>
+            </trans-unit>
+            <trans-unit id="All Tickets">
+                <source>All Tickets</source>
+                <target>Tous les Billets</target>
+            </trans-unit>
+            <trans-unit id="Tickets Search">
+                <source>Tickets Search</source>
+                <target>Rechercher Billets</target>
+            </trans-unit>
+            <trans-unit id="Create a Ticket">
+                <source>Create a Ticket</source>
+                <target>Créer un Billet</target>
+            </trans-unit>
+            <trans-unit id="Add">
+                <source>Add</source>
+                <target>Ajout</target>
+            </trans-unit>
+            <trans-unit id="List">
+                <source>List</source>
+                <target>Liste</target>
+            </trans-unit>
+            <trans-unit id="State Edit">
+                <source>State Edit</source>
+                <target>Modification Etat</target>
+            </trans-unit>
+            <trans-unit id="Display">
+                <source>Display</source>
+                <target>Afficher</target>
+            </trans-unit>
+            <trans-unit id="Edit">
+                <source>Edit</source>
+                <target>Modifier</target>
+            </trans-unit>
+            <trans-unit id="Delete">
+                <source>Delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="Create">
+                <source>Create</source>
+                <target>Créer</target>
+            </trans-unit>
+            <trans-unit id="Update">
+                <source>Update</source>
+                <target>Mettre à Jour</target>
+            </trans-unit>
+            <trans-unit id="Publish">
+                <source>Publish</source>
+                <target>Publier</target>
+            </trans-unit>
+            <trans-unit id="Hide">
+                <source>Hide</source>
+                <target>Dé-publier</target>
+            </trans-unit>
+            <trans-unit id="Cancel">
+                <source>Cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="Search">
+                <source>Search</source>
+                <target>Rechercher</target>
+            </trans-unit>
+            <trans-unit id="Public">
+                <source>Public</source>
+                <target>Publique</target>
+            </trans-unit>
+            <trans-unit id="Cancelled">
+                <source>Cancelled</source>
+                <target>Annulé</target>
+            </trans-unit>
+            <trans-unit id="Registred">
+                <source>Registred</source>
+                <target>Enregistré</target>
+            </trans-unit>
+            <trans-unit id="Active">
+                <source>Active</source>
+                <target>Actif</target>
+            </trans-unit>
+            <trans-unit id="Passive">
+                <source>Passive</source>
+                <target>Passif</target>
+            </trans-unit>
+            <trans-unit id="Title">
+                <source>Title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="Description">
+                <source>Description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="Theme">
+                <source>Theme</source>
+                <target>Thème</target>
+            </trans-unit>
+            <trans-unit id="Type">
+                <source>Type</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="Starts the">
+                <source>Starts the</source>
+                <target>Commence le</target>
+            </trans-unit>
+            <trans-unit id="Ends the">
+                <source>Ends the</source>
+                <target>Se termine le</target>
+            </trans-unit>
+            <trans-unit id="at">
+                <source>at</source>
+                <target>à</target>
+            </trans-unit>
+            <trans-unit id="Time zone">
+                <source>Time zone</source>
+                <target>Fuseau Horaire</target>
+            </trans-unit>
+            <trans-unit id="Address">
+                <source>Address</source>
+                <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="State">
+                <source>State</source>
+                <target>Etat</target>
+            </trans-unit>
+            <trans-unit id="Country">
+                <source>Country</source>
+                <target>Pays</target>
+            </trans-unit>
+            <trans-unit id="City">
+                <source>City</source>
+                <target>Ville</target>
+            </trans-unit>
+            <trans-unit id="Zip Code">
+                <source>Zip Code</source>
+                <target>Code Postal</target>
+            </trans-unit>
+            <trans-unit id="Organizer">
+                <source>Organizer</source>
+                <target>Organisateur</target>
+            </trans-unit>
+            <trans-unit id="Starting Schedule">
+                <source>Starting Schedule</source>
+                <target>Horaire de Début</target>
+            </trans-unit>
+            <trans-unit id="Ending Schedule">
+                <source>Ending Schedule</source>
+                <target>Horaire de Fin</target>
+            </trans-unit>
+            <trans-unit id="Creation date">
+                <source>Creation date</source>
+                <target>Date de Création</target>
+            </trans-unit>
+            <trans-unit id="Picture">
+                <source>Picture</source>
+                <target>Image</target>
+            </trans-unit>
+            <trans-unit id="No Events Found">
+                <source>No Events Found</source>
+                <target>Aucun Evénement Trouvé</target>
+            </trans-unit>
+            <trans-unit id="Copyright">
+                <source>Copyright © 2017</source>
+                <target>Droit d'auteur © 2017</target>
+            </trans-unit>
+            <trans-unit id="All rights reserved">
+                <source>All rights are reserved.</source>
+                <target>Tous les droits sont réservés.</target>
+            </trans-unit>
+            <trans-unit id="Search...">
+                <source>"Search..."</source>
+                <target>"Rechercher..."</target>
+            </trans-unit>
+            <trans-unit id="Wording">
+                <source>Wording</source>
+                <target>Libellé</target>
+            </trans-unit>
+            <trans-unit id="Modification date">
+                <source>Modification date</source>
+                <target>Date de Modification</target>
+            </trans-unit>
+            <trans-unit id="Action">
+                <source>Action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="Activate">
+                <source>Activate</source>
+                <target>Activer</target>
+            </trans-unit>
+            <trans-unit id="Deactivate">
+                <source>Deactivate</source>
+                <target>Désactiver</target>
+            </trans-unit>
+            <trans-unit id="No Themes Found">
+                <source>No Themes Found</source>
+                <target>Aucun Thème Trouvé</target>
+            </trans-unit>
+            <trans-unit id="No Types Found">
+                <source>No Types Found</source>
+                <target>Aucun Type Trouvé</target>
+            </trans-unit>
+            <trans-unit id="No Tickets Found">
+                <source>No Tickets Found</source>
+                <target>Aucun Billet Trouvé</target>
+            </trans-unit>
+            <trans-unit id="Events List">
+                <source>Events List</source>
+                <target>Liste des Evénements</target>
+            </trans-unit>
+            <trans-unit id="Themes List">
+                <source>Themes List</source>
+                <target>Liste des Thèmes</target>
+            </trans-unit>
+            <trans-unit id="Types List">
+                <source>Types List</source>
+                <target>Liste des Types</target>
+            </trans-unit>
+            <trans-unit id="Tickets List">
+                <source>Tickets List</source>
+                <target>Liste des Billets</target>
+            </trans-unit>
+                       
+           <trans-unit id="Reservations List">
+                <source>Reservations List</source>
+                <target>Liste des Réservations</target>
+            </trans-unit>
+            <trans-unit id="Reservations Management">
+                <source>Reservations Management</source>
+                <target>Gestion des Réservations</target>
+            </trans-unit> 
+            <trans-unit id="Next Event">
+                <source>Next Event</source>
+                <target>Evénement Suivant</target>
+            </trans-unit>
+            <trans-unit id="Previous Event">
+                <source>Previous Event</source>
+                <target>Evénement Précédant</target>
+            </trans-unit>
+            <trans-unit id="Next Theme">
+                <source>Next Theme</source>
+                <target>Thème Suivant</target>
+            </trans-unit>
+            <trans-unit id="Previous Theme">
+                <source>Previous Theme</source>
+                <target>Thème Précédant</target>
+            </trans-unit>
+            <trans-unit id="Next Type">
+                <source>Next Type</source>
+                <target>Type Suivant</target>
+            </trans-unit>
+            <trans-unit id="Previous Type">
+                <source>Previous Type</source>
+                <target>Type Précédant</target>
+            </trans-unit>
+            <trans-unit id="Next Ticket">
+                <source>Next Ticket</source>
+                <target>Billet Suivant</target>
+            </trans-unit>
+            <trans-unit id="Previous Ticket">
+                <source>Previous Ticket</source>
+                <target>Billet Précédant</target>
+            </trans-unit>
+            <trans-unit id="New">
+                <source>New</source>
+                <target>Nouveau</target>
+            </trans-unit>
+            <trans-unit id="Event">
+                <source>Event</source>
+                <target>Evénement</target>
+            </trans-unit>
+            
+            <trans-unit id="Ticket">
+                <source>Ticket</source>
+                <target>Billet</target>
+            </trans-unit>
+            <trans-unit id="Price">
+                <source>Price</source>
+                <target>Prix</target>
+            </trans-unit>
+            <trans-unit id="Number">
+                <source>Number</source>
+                <target>Nombre</target>
+            </trans-unit>
+            <trans-unit id="Waiting List">
+                <source>Waiting List</source>
+                <target>Liste d'attente</target>
+            </trans-unit>
+            <trans-unit id="Reserve">
+                <source>Reserve</source>
+                <target>Réserver</target>
+            </trans-unit>
+            <trans-unit id="Passed Event">
+                <source>Passed Event</source>
+                <target>Evénement passé</target>
+            </trans-unit>
+            <trans-unit id="In Progress Event">
+                <source>In Progress Event</source>
+                <target>Evénement en cours</target>
+            </trans-unit>
+            <trans-unit id="Coming Event">
+                <source>Coming Event</source>
+                <target>Evénement à venir</target>
+            </trans-unit>
+            <trans-unit id="My Events">
+                <source>My Events</source>
+                <target>Mes Evénements</target>
+            </trans-unit>
+            <trans-unit id="All My Events">
+                <source>All My Events</source>
+                <target>Tous Mes Evénements</target>
+            </trans-unit>
+            <trans-unit id="My Public Events">
+                <source>My Public Events</source>
+                <target>Mes Evénements Publiques</target>
+            </trans-unit>
+            <trans-unit id="My Cancelled Events">
+                <source>My Cancelled Events</source>
+                <target>Mes Evénements Annulés</target>
+            </trans-unit>
+            <trans-unit id="My Registred Events">
+                <source>My Registred Events</source>
+                <target>Mes Evénements Enregistrés</target>
+            </trans-unit>
+            <trans-unit id="My Tickets">
+                <source>My Tickets</source>
+                <target>Mes Billets</target>
+            </trans-unit>
+            <trans-unit id="All My Tickets">
+                <source>All My Tickets</source>
+                <target>Tous mes Billets</target>
+            </trans-unit>
+            <trans-unit id="Home Page">
+                <source>Home Page</source>
+                <target>Page d'acceuil</target>
+            </trans-unit>
+            <trans-unit id="Place">
+                <source>Place</source>
+                <target>Lieu</target>
+            </trans-unit>
+            <trans-unit id="More Details">
+                <source>More Details</source>
+                <target>Plus de Détails</target>
+            </trans-unit>
+            <trans-unit id="Sign out">
+                <source>Sign out</source>
+                <target>Se déconnecter</target>
+            </trans-unit>
+            <trans-unit id="Profile">
+                <source>Profile</source>
+                <target>Profil</target>
+            </trans-unit>
+            <trans-unit id="Online">
+                <source>Online</source>
+                <target>En ligne</target>
+            </trans-unit>
+            <trans-unit id="orion presentation">
+                <source>Orion is a platform for managing business opportunities.</source>
+                <target>Orion est une plateforme de gestion des opportunités d’affaires.</target>
+            </trans-unit>
+            <trans-unit id="hompe page admin">
+                <source>Being administrator, Orion Event gives you the opportunity to manage all entities. You are the only responsible for managing themes and types of events. You can also manage events, tickets and bookings made by other users.
+                    For the Orion Forum module, you have the opportunity to manage forums and their categories as well as topics and answers to them.</source>
+                <target>Etant administrateur Orion Event vous offre la possibilité de tous gérer. Vous êtes le seul responsable de la gestion des thèmes et des types d’événements. Vous avez aussi la possibilité de gérer les événements, les billets et les réservations effectuées par les autres utilisateurs.
+                    Pour le module Orion Forum vous avez l’opportunité de gérer les forums et leurs catégories ainsi que les sujets et réponses à ses derniers.</target>
+            </trans-unit>
+            <trans-unit id="hompe page user">
+                <source>Being an Orion Event user, you can create events and you are the only responsible for managing your created events, your tickets and the bookings made for your events
+For the Orion Forum module, you have the opportunity to create discussion subjects and to answer to subjects posted by other users.
+</source>
+                <target>Etant utilisateur Orion Event vous offre la possibilité de créer des événements. Vous êtes le seul responsable de vos événement crées ainsi que vos billets et les réservations à vos événements.
+Pour le module Orion Forum vous avez l’opportunité de créer des sujets de discussion et de répondre à des sujets postés par d’autres utilisateurs.
+</target>
+            </trans-unit>
+            <trans-unit id="home page moderateur">
+                <source>Being an Orion Event moderator, you can create events and you are the only responsible for managing your created events, your tickets and the bookings made for your events
+For the Orion Forum module, you have the opportunity to moderate discussion subjects and answers posted by other users.
+</source>
+                <target>Etant modérateur Orion Event vous offre la possibilité de créer des événements. Vous êtes le seul responsable de vos événement crées ainsi que vos billets et les réservations à vos événements.
+Pour le module Orion Forum vous avez l’opportunité de modérer les sujets et réponses postés par les autres utilisateurs.
+</target>
+            </trans-unit>
+            <trans-unit id="Choose a country">
+                <source>Choose a country</source>
+                <target>Choisissez un pays</target>
+            </trans-unit>
+            <trans-unit id="Choose a type">
+                <source>Choose a type</source>
+                <target>Choisissez un type</target>
+            </trans-unit>
+            <trans-unit id="Choose a theme">
+                <source>Choose a theme</source>
+                <target>Choisissez un thème</target>
+            </trans-unit>
+            <trans-unit id="Free">
+                <source>Free</source>
+                <target>Gratuit</target>
+            </trans-unit>
+            <trans-unit id="Paying">
+                <source>Paying</source>
+                <target>Payant</target>
+            </trans-unit>
+            <trans-unit id="Available Tickets">
+                <source>Available Tickets</source>
+                <target>Billets disponibles</target>
+            </trans-unit>
+            
+            <trans-unit id="Are you sure ?">
+                <source>Are you sure ?</source>
+                <target>Etes-vous sur de vouloir réserver ?</target>
+            </trans-unit>
+            <trans-unit id="Reserved By">
+                <source>Reserved By</source>
+                <target>Réservé par</target>
+            </trans-unit>
+            <trans-unit id="Reservation date">
+                <source>Reservation date</source>
+                <target>Date de réservation</target>
+            </trans-unit>
+            <trans-unit id="My Reservations">
+                <source>My Reservations</source>
+                <target>Mes Réservations</target>
+            </trans-unit>
+            <trans-unit id="Tickets Details">
+                <source>Tickets Details</source>
+                <target>Détails des billets</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,19 @@
+user_billet_par_event_reserve:
+    path:     /{id}/eventbilletsreserve
+    defaults: { _controller: "OrionEventBundle:User_Reservation:indexParEventReserve" }
+    
+user_billet_reserve:
+    path:     /{id}/reserve
+    defaults: { _controller: "OrionEventBundle:User_Reservation:Reserve" }
+    
+user_billet_reserve_end:
+    path:     /{idBillet}/{nbBillet}/reserveEnd
+    defaults: { _controller: "OrionEventBundle:User_Reservation:ReserveEnd" }
+
+user_my_reservation:
+    path:     /myReservation
+    defaults: { _controller: "OrionEventBundle:User_Reservation:MyReservation" }
+   
+user_reservation_cancell:
+    path:     /{id}/cancel
+    defaults: { _controller: "OrionEventBundle:User_Reservation:Cancel" }

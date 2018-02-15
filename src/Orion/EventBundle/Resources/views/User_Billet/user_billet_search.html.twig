@@ -1,0 +1,95 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-search"></i> {{ 'Search'|trans }}
+{% endblock operation %}
+{% block body -%}
+
+    <form method="POST" action="" class="text-center">
+        <table>
+            <tr>
+                <td>
+                    <label>{{ 'Wording'|trans }}</label>
+                    <input type='text' name="input_libellet" />
+                </td>
+                <td class="col-sm-3">
+                    <label>{{ 'Type'|trans }}</label>
+                    <ul style="list-style-type:none">
+                        <li>
+                            <input type="checkbox" name="input_type" value="1"> {{ 'Paying'|trans }}
+                        </li>
+                        <li>
+                            <input type="checkbox" name="input_type" value="0" > {{ 'Free'|trans }}
+                        </li>
+                </td> 
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-success" name="rechercher" value=" Rechercher"/>
+    </form>
+    </br>
+
+    {% if entities is empty %}
+        <div class="text-danger text-center">{{ 'No Tickets Found'|trans }}</div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+                <tr class="info">
+
+                    <th>{{ 'Wording'|trans }}</th>
+                    <th>{{ 'Type'|trans }}</th>
+                    <th>{{ 'Price'|trans }}</th>
+                    <th>{{ 'Number'|trans }}</th>
+                    <th>{{ 'Waiting list'|trans }}</th>
+                    <th>{{ 'Event'|trans }}</th>
+                    <th>{{ 'Creation date'|trans }}</th>
+                    <th>{{ 'Action'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                {% if entity.evenement.organisateur == app.user%}
+                    <tr>
+
+                        <td><a href="{{ path('user_billet_show', { 'id': entity.id }) }}">{{ entity.libelle }}</a></td>
+                        <td>
+            {% if entity.type == 1 %}<p class="text-danger">{{ 'Paying'|trans }}</p>                                   
+            {% else %}<p class="text-success">{{ 'Free'|trans }}</p>                                    
+            {% endif %}</td>
+            <td>
+            {% if entity.type == 1 %}<p class="text-danger">{{ entity.prix }} <b>€</b></p>                                   
+            {% else %}<p class="text-success">{{ 'Free'|trans }}</p>                                    
+            {% endif %}</td>
+                        <td>{{ entity.nombre }}</td>
+                        <td>{{ entity.attente }}</td>
+                        <td>{{ entity.evenement }}</td>
+                        <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <ul style="list-style-type:none">
+                                <li>
+                                    <a href="{{ path('user_billet_show', { 'id': entity.id }) }}">
+                                        <button type="button" class="btn-xs btn-default btn-group fa fa-desktop"> {{ 'Display'|trans }}</button>
+                                    </a>  
+                                </li>
+                                <li>
+                                    <a href="{{ path('user_billet_edit', { 'id': entity.id }) }}">
+                                        <button type="button" class="btn-xs btn-default btn-group fa fa-wrench"> {{ 'Edit'|trans }}</button>
+                                    </a>                                    
+                                </li>
+                                
+                            </ul>
+                        </td>
+                    </tr>
+                    {%endif%}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <table>
+            
+    </table>
+{% endif %}
+{% endblock %}

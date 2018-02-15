@@ -1,0 +1,19 @@
+user_event_index:
+    path:     /index
+    defaults: { _controller: "OrionEventBundle:User_Event:index" }
+    
+user_event_search:
+    path:     /search
+    defaults: { _controller: "OrionEventBundle:User_Event:search" }
+    
+user_event_show:
+    path:     /{id}/show
+    defaults: { _controller: "OrionEventBundle:User_Event:show" }
+
+user_event_book:
+    path:     /{id}/show
+    defaults: { _controller: "OrionEventBundle:User_Event:book" }
+    
+
+
+    

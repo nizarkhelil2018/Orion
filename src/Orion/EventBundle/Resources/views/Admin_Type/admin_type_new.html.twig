@@ -1,0 +1,62 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+{% block module %}
+    {{ 'Types Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-plus"></i> {{ 'Add'|trans }}
+{% endblock operation %}
+{% block body -%}
+    <h2 style="color: silver" class="text-center"><b>{{ 'New'|trans }} {{ 'Type'|trans }}</b></h2>
+
+
+    <table class="table-responsive" >
+        {{ form_start(form) }}  
+        <form class="well" action="{{ path('admin_type_new') }}" method="post" {{ form_enctype(form) }}>
+            <input type="hidden" name="_method" value="POST" />
+            <table class="table table-condensed table-striped">
+                <tr>                   
+                    <th class="col-sm-3">{{ 'Wording'|trans }}</th>
+                    <td>{{ form_widget(form.libelle) }} </td>
+                </tr>                
+                <tr>                   
+                    <th>{{ 'Description'|trans }}</th>
+
+                    <td class="col-sm-9">{{ form_widget(form.description) }} </td>
+                </tr>
+                <tr>                   
+                    <th>{{ 'State'|trans }}</th>
+                    <td>{{ form_widget(form.etat) }} </td>
+                </tr>
+                <tr>                   
+                    <th>{{ 'Creation Date'|trans }}</th>
+                    <td>{{ form_widget(form.dateCreation) }} </td>
+                </tr>
+                <input type="hidden" value="{{ entity.datecreation|date('d/m/Y H:i:s') }}">
+                <tr>                   
+                    <th>{{ 'Modification Date'|trans }}</th>
+                    <td>{{ form_widget(form.dateModification) }} </td>
+                </tr>
+                <input type="hidden" value="{{ entity.datemodification|date('d/m/Y H:i:s') }}">
+
+            </table>
+            <table>
+
+                {{ form_widget(form._token) }}
+
+                <th class="col-sm-3">   
+                    <a href="{{ path('admin_type_search') }}">
+                        <button type="submit" class="btn btn-group-sm btn-success fa fa-plus" >  {{ 'Create'|trans }} 
+                        </button>
+                    </a>
+                </th>
+        </form>
+
+        <th>
+            <a href="{{ path('admin_type_search') }}">
+                <button type="button" class="btn btn-group-sm fa fa-list"> {{ 'All Types'|trans }}</button>
+            </a>
+        </th>              
+
+    </table>                        
+
+{% endblock %}

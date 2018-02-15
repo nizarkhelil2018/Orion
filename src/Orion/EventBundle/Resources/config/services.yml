@@ -1,0 +1,4 @@
+services:
+#    orion_event.example:
+#        class: Orion\EventBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

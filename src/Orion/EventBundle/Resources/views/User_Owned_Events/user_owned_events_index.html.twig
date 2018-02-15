@@ -1,0 +1,97 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-list"></i> {{ 'List'|trans }}
+{% endblock operation %}
+{% block body -%}
+<h1 class="text-center text-primary"><b>{{ 'Events List'|trans }}</b></h1>
+            {% if entities is empty %}
+<div class="text-danger text-center">{{ 'No Events Found'|trans }}</div>
+    {% else %}
+<table class="table table-bordered">
+    <thead>
+        <tr class="info text-muted">
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Description'|trans }}</th>
+            <th>{{ 'State'|trans }}</th>
+            <th>{{ 'Theme'|trans }}</th>
+            <th>{{ 'Type'|trans }}</th>
+            <th>{{ 'Starting Schedule'|trans }}</th>
+            <th>{{ 'Ending Schedule'|trans }}</th>
+            <th>{{ 'Time zone'|trans }}</th>
+            <th>{{ 'Address'|trans }}</th>
+            <th>{{ 'Action'|trans }}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        
+            {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('user_owned_event_show', { 'id': entity.id }) }}"><b>{{ entity.titre }}</b></a></td>
+            <td class="text-justify">{{ entity.description }}</td>
+
+            <td>
+                <a href="{{ path('user_owned_event_edit_State', { 'id': entity.id }) }}">
+                            {% if entity.etat == 2 %}<b><p class="text-success">{{ 'Public'|trans }}</p></b>
+                            <a href="{{ path('user_owned_event_hide', { 'id': entity.id }) }}" class="text-warning fa fa-ban fa-2x">
+                        {#<button type="button" class="btn-xs text-warning fa fa-ban"> {{ 'Hide'|trans }}</button>#}
+                    </a> </br>
+                    <a href="{{ path('user_owned_event_cancel', { 'id': entity.id }) }}" class="text-danger fa fa-close fa-2x">
+                        {#<button type="button" class="btn-xs text-danger fa fa-close"> {{ 'Cancel'|trans }}</button>#}
+                    </a>
+                            {% elseif entity.etat == 1 %}<b><p class="text-warning">{{ 'Registred'|trans }}</p><b>
+                                    <a href="{{ path('user_owned_event_publish', { 'id': entity.id }) }}" class="text-success fa fa-share fa-2x">
+                                {#<button type="button" class="btn-xs text-success fa fa-share"> {{ 'Publish'|trans }}</button>#}
+                            </a></br>
+                            <a href="{{ path('user_owned_event_cancel', { 'id': entity.id }) }}" class="text-danger fa fa-close fa-2x">
+                                {#<button type="button" class="btn-xs text-danger fa fa-close"> {{ 'Cancel'|trans }}</button>#}
+                            </a>
+                                    {% elseif entity.etat ==0 %} <b><p class="text-danger">{{ 'Cancelled'|trans }}</p>
+                                        <!-- <a href="{{ path('user_owned_event_publish', { 'id': entity.id }) }}">
+                                            <button type="button" class="btn-xs btn-info">Publier</button>
+                                        </a></br>
+
+                                        <a href="{{ path('user_owned_event_hide', { 'id': entity.id }) }}">
+                                            <button type="button" class="btn-xs btn-warning">Dépublier</button></br>
+                                        </a> -->
+                                    {% endif %}
+                                        
+                                <a>
+                                    </td>
+                                    <td>{{ entity.theme }}</td>
+                                    <td>{{ entity.type }}</td>
+                                    <td>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.horaireDebut|date('H:i') }}{% endif %}</td>
+                                    <td>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.HoraireFin|date('H:i') }}{% endif %}</td>
+                                    <td>GMT + {{ entity.fuseauHoraire }}</td>
+                                    <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+                                    <td>               
+                                        <a href="{{ path('user_owned_event_show', { 'id': entity.id }) }}" class="text-primary fa fa-desktop fa-2x">
+                                            {#<button type="button" class="btn-xs btn-default btn-block text-left text-primary fa fa-desktop"> {{ 'Display'|trans }}</button>#}
+                                        </a></br>
+
+                                        <a href="{{ path('user_owned_event_edit', { 'id': entity.id }) }}" class="text-warning fa fa-edit fa-2x">
+                                            {#<button type="button" class="btn-xs btn-default btn-block text-left text-navy fa fa-edit"> {{ 'Edit'|trans }}</button>#}
+                                        </a></br> 
+                                        {% if entity.etat !=0 %}
+                                        <a href="{{ path('user_billet_ajout', { 'id': entity.id })}}" class="fa fa-ticket fa-2x text-success">
+                                           {# <button type="button" class="btn-xs btn-default btn-block text-left btn-group fa fa-ticket"> {{ 'Create a Ticket'|trans }}</button>#}
+                                        </a> </br>
+                                        <a href="{{ path('user_billet_par_event', { 'id': entity.id })}}" class="btn-group fa fa-list fa-2x">
+                                            {#<button type="button" class="btn-xs btn-default btn-block text-left btn-group fa fa-list"> {{ 'All Tickets'|trans }}</button>#}
+                                        </a></br>
+                                        <a href="{{ path('user_owned_event_booking_list', { 'id': entity.id })}}" class="fa fa-2x fa-shopping-cart text-purple">
+                                           {# <button type="button" class="btn-xs btn-default btn-block text-left btn-group fa fa-list"> Liste des réservation</button>#}
+                                        </a>
+                                        {% endif %}
+                                    </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                    </tbody>
+                                    </table>                                
+                                {% endblock %}

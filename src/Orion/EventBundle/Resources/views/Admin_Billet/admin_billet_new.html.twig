@@ -1,0 +1,64 @@
+{% extends 'OrionEventBundle::layout_admin.html.twig' %}
+
+{% block module %}
+    {{ 'Tickets Management'|trans }}
+{% endblock module %}
+{% block operation %}
+    <i class="fa fa-plus"></i> {{ 'Add'|trans }}
+{% endblock operation %}
+{% block body -%}
+    <h2 style="color: silver" class="text-center"><b>{{ 'New'|trans }} {{ 'Ticket'|trans }}</b></h2>    
+    <table class="table-responsive" >
+        {{ form_start(form) }}  
+        <form class="well" action="" method="post" {{ form_enctype(form) }}>
+            <input type="hidden" name="_method" value="POST" />
+            <table class="table table-condensed table-striped">
+                <tr>                   
+                    <th class="col-sm-3">{{ 'Wording'|trans }}</th>
+                    <td>{{ form_widget(form.libelle) }} </td>
+                </tr>                
+                <tr>                   
+                    <th>{{ 'Type'|trans }}</th>
+                    <td class="col-sm-9">{{ form_widget(form.type) }} </td>
+                </tr>
+                <tr>                   
+                    <th>{{ 'Price'|trans }}</th>
+                    <td>{{ form_widget(form.prix) }} </td>
+                </tr>
+                <tr>                   
+                    <th>{{ 'Number'|trans }}</th>
+                    <td>{{ form_widget(form.nombre) }} </td>
+                </tr>
+                <tr>                   
+                    <th>{{ 'Waiting List'|trans }}</th>
+                    <td>{{ form_widget(form.attente) }} </td>
+                </tr>
+               
+                <tr>                   
+                    <th>{{ 'Creation date'|trans }}</th>
+                    <td>{{ form_widget(form.dateCreation) }} </td>
+                </tr>
+                <tr>                   
+                    <th>{{ 'Event'|trans }}</th>
+                    <td>{{ form_widget(form.evenement) }} </td>
+                </tr>
+                <input type="hidden" value="{{ entity.datecreation|date('Y-m-d H:i:s') }}">
+            </table>
+            <table>
+                {{ form_widget(form._token) }}
+                <th class="col-sm-3">   
+                    <a href="">
+                        <button type="submit" class="btn btn-success fa fa-plus"> {{ 'Create'|trans}}</button>
+                    </a>
+                </th>
+        </form>
+
+        <th>
+            <a href="{{ path('admin_billet_search') }}">
+                <button type="button" class="btn btn-default fa fa-list"> {{ 'All Tickets'|trans }}</button>
+            </a>
+        </th>              
+
+    </table>                        
+
+{% endblock %}

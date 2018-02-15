@@ -1,0 +1,100 @@
+{% extends 'OrionEventBundle::layout_front_user.html.twig' %}
+
+{% block module %}
+{{ 'Events Management'|trans }}
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-fw fa-desktop"></i> {{ 'Display'|trans }}
+{% endblock operation %}
+{% block body -%}
+<div class="text-center" style="color: blue">
+    <p>
+    <h1>
+            {{entity.titre}}
+    </h1>
+</p>
+</div>
+<table class="table table-condensed">
+
+    <tbody align="left">
+
+        <tr>
+            <th class="text-info">{{ 'Description'|trans }}</th>
+            <td class="text-justify">{{ entity.description }}</td>
+            <td rowspan="8"class="col-sm-3"><img src="{{ asset('uploads/' ~ entity.path) }}" class="img-responsive img-rounded"></td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'State'|trans }}</th>
+            <td>                
+                 
+                    {% if "now"|date('YmdHis')  < entity.horaireDebut|date|date('YmdHis') %}
+                    <b class="text-success">{{ 'Coming Event'|trans }}</b>
+                    {% elseif "now"|date('YmdHis')  > entity.horaireDebut|date|date('YmdHis')  and "now"|date('YmdHis')  < entity.HoraireFin|date('YmdHis')%}
+                    <b class="text-warning">{{ 'In Progress Event'|trans }}</b>
+                    {% elseif "now"|date('YmdHis')  > entity.HoraireFin|date('YmdHis') %}
+                    <b class="text-danger">{{ 'Passed Event'|trans }}</b>
+                    {% else %}
+                    erreur
+                    {% endif %}
+
+            </td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Theme'|trans }}</th>
+            <td>{{ entity.theme }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Type'|trans }}</th>
+            <td>{{ entity.type }}</td>
+        </tr>
+
+        <tr>
+            <th class="text-info">{{ 'Starting Schedule'|trans }}</th>
+            <td>{{ entity.horaireDebut|date('d/m/Y') }} {{ 'at'|trans }} {{ entity.horaireDebut|date('H:i') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Ending Schedule'|trans }}</th>
+            <td>Le {{ entity.HoraireFin|date('d-m-Y à H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Time zone'|trans }}</th>
+            <td>GMT + {{ entity.fuseauHoraire }}</td>
+        </tr>
+        <tr>
+            <th class="text-info">{{ 'Address'|trans }}</th>
+            <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+        </tr>
+        <tr align="center">
+            <td colspan="2">
+                <ul style="list-style-type:none">
+ 
+        <li>
+            {% if "now"|date('YmdHis')  < entity.horaireDebut|date|date('YmdHis') %}
+                    <b class="text-success"><a href="{{ path('user_billet_par_event_reserve', { 'id': entity.id }) }}">
+                    <button type="button" class="btn-xs btn-info">Voir les billets</button>
+                    </a></b>
+                    {% elseif "now"|date('YmdHis')  > entity.horaireDebut|date|date('YmdHis')  and "now"|date('YmdHis')  < entity.HoraireFin|date('YmdHis')%}
+                    <b class="text-warning"><a href="{{ path('user_billet_par_event_reserve', { 'id': entity.id }) }}">
+                    <button type="button" class="btn btn-default fa fa-ticket">{{'Tickets List'|trans}}</button>
+                </a></b>
+                    {% elseif "now"|date('YmdHis')  > entity.HoraireFin|date('YmdHis') %}
+                    
+                    {% endif %}
+        </li>
+    </ul>	
+            </td>
+            <td class="center"> 
+            <a href="{{ path('user_event_index') }}">
+            <button type="button" class="btn  btn-default fa fa-list"> {{ 'All Events'|trans }}</button>
+        </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+{% endblock %}

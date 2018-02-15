@@ -1,0 +1,65 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Evenement list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Etat</th>
+                <th>Datecreation</th>
+                <th>Adresse</th>
+                <th>Codepostal</th>
+                <th>Ville</th>
+                <th>Pays</th>
+                <th>Horairedebut</th>
+                <th>Horairefin</th>
+                <th>Fuseauhoraire</th>
+                <th>Path</th>
+                <th>Updateat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('evenement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.titre }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.etat }}</td>
+                <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.adresse }}</td>
+                <td>{{ entity.codePostal }}</td>
+                <td>{{ entity.ville }}</td>
+                <td>{{ entity.pays }}</td>
+                <td>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.fuseauHoraire }}</td>
+                <td>{{ entity.path }}</td>
+                <td>{% if entity.updateAt %}{{ entity.updateAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('evenement_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('evenement_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('evenement_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

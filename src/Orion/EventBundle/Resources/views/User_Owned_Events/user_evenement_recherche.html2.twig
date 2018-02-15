@@ -1,0 +1,106 @@
+{% extends 'OrionEventBundle::layout_user.html.twig' %}
+
+
+{% block module %}
+Gestion des Evénements
+{% endblock module %}
+{% block operation %}
+<i class="fa fa-search"></i> Recherche
+{% endblock operation %}
+{% block body -%}
+<form method="POST" action="" class="text-center">
+    <table>
+        <tr>
+            <td class="col-sm-3">
+                <label>Titre</label>                
+                <input type='text' name="input_titre" value=""/>
+            </td>
+            <td class="col-sm-3">
+                <label>Description</label>
+                <input type='text' name="input_description" value=""/>
+            </td>
+            <td class="col-sm-3">                
+                <label>Pays</label>
+                <input type='text' name="input_pays" value=""/>
+            </td>
+        </tr>
+        <tr>
+            <td class="col-sm-3">
+                <label>Type</label>
+                <input type='text' name="input_type" value=""/>
+            </td>           
+            <td class="col-sm-3">
+                <label>Thème</label>
+                <input type='text' name="input_theme" value=""/>
+            </td>          
+
+        </tr>
+        <tr>
+            <td class="col-sm-3">
+                <label>Commence le</label>
+                <input type='date' name="input_date_debut" value=""/>
+            </td>
+        </tr>
+
+    </table> 
+    <div class="text-center">
+        </br>
+        <input type="submit" class="btn btn-success" name="rechercher" value=" Rechercher"/>
+    </div>
+</form>
+</br>
+
+    {% if entities is empty %}
+<div class="text-danger text-center">Aucun Evénement Trouvé</div>
+    {% else %}
+        {% for entity in entities %}
+<table class="table table-bordered">
+    <tr>
+        <th class="col-sm-2"><h4 class="text-purple text-bold">{{ entity.titre }}</h4></th>
+<td rowspan="3" class="col-sm-6">Image
+    <img  src="{{entity.getAbsolutePath}}" alt="" width="200" height="100" />
+    <img src="{{ asset('web/uploads/'~entity.path|e) }}" alt="" />
+</td>
+<th class="col-sm-2 text-info">Thème</th>
+<td class="col-sm-2">{{ entity.theme }}</td>
+
+</tr>
+<tr>
+    <td rowspan="6">
+        <ul style="list-style-type:none">
+            <li>
+                <a href="{{ path('user_owned_event_show', { 'id': entity.id }) }}">
+                    <button type="button" class="btn-xs btn-default fa fa-desktop"> Afficher</button>
+                </a>
+            </li>
+
+        </ul>
+    </td>
+    <th class="text-info">Type</td>
+    <td>{{ entity.type }}</td>
+</tr>
+<tr>
+    <th class="text-info">Commence le</th>
+    <td>{% if entity.horaireDebut %}{{ entity.horaireDebut|date('d-m-Y à H:i:s') }}{% endif %}</td>
+</tr>
+<tr>
+    <td rowspan="4">
+        <b class="text-info ">Description:</b></br>
+        <p class="text-justify">{{ entity.description }}</p></td>
+    <th class="text-info">Se termine le</th>        
+    <td>{% if entity.HoraireFin %}{{ entity.HoraireFin|date('d-m-Y à H:i:s') }}{% endif %}</td>
+</tr>
+<tr>
+    <th class="text-info">Fuseau Horaire</th>
+    <td>GMT + {{ entity.fuseauHoraire }}</td>
+</tr>
+<tr>
+    <th class="text-info">Adresse</th>
+    <td>{{ entity.adresse }}, {{ entity.ville }} {{ entity.codePostal }}, {{ entity.pays }}</td>
+</tr>
+
+</table>
+                    {% endfor %} 
+
+                {% endif %}
+            {% endblock %}

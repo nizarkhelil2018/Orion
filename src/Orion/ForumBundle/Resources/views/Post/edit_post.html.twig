@@ -1,0 +1,53 @@
+{% extends 'OrionForumBundle::layout_user.html.twig' %}
+
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+  {% stylesheets 
+    '@OrionForumBundle/Resources/public/css/post.css' %}
+  <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1 class="text-center">{{ 'orion.forum.post.editpost'|trans }}</h1>
+  
+  <ul id="postsList" class="list-unstyled">
+
+    {% if postpreview %}
+        {% include 'OrionForumBundle:Post:preview-post.html.twig' %}
+    {% endif %}
+    
+  </ul>
+
+  {% if form is not null %}
+  <h2>form</h2>
+
+  
+   {% include 'OrionForumBundle:Form:Post.html.twig' %}
+
+  {% endif %}
+  <div class="clearfix"></div>
+
+</div>
+{% endblock %}
+
+
+{% block js %}
+  {% if app.user %}
+    {% if is_granted('ROLE_MODERATOR') %}
+        {% javascripts
+          '@OrionForumBundle/Resources/public/js/post.js'
+          '@OrionForumBundle/Resources/public/js/moderator/post.js' %}
+          <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}       
+    {% else %}
+        {% javascripts
+          '@OrionForumBundle/Resources/public/js/post.js' %}
+          <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endif %}
+  {% endif %}
+{% endblock %}

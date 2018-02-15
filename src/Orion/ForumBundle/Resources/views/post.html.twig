@@ -1,0 +1,34 @@
+{% extends 'OrionForumBundle::layout_user.html.twig' %}
+
+{% block title %}{{ topic.title }}{% endblock %}
+
+{% block body %}
+  <h1 class="text-center">{{ topic.title }}</h1>
+  {{ knp_pagination_render(posts) }}
+  
+  {% if topic.closed == true %}
+    <div class="alert alert-danger">{{ 'orion.forum.label.isclosed'|trans }}</div>
+  {% endif %}
+  {% if topic.resolved == true %}
+    <div class="alert alert-success">{{ 'orion.forum.label.issolved'|trans }}</div>
+  {% endif %}
+  {% if topic.pinned == true %}
+    <div class="alert alert-warning">{{ 'orion.forum.label.ispinned'|trans }}</div>
+  {% endif %}
+
+  <ul class="list-unstyled">
+    {% for post in posts %}{% include 'OrionForumBundle::Post/single-post.html.twig' %}{% endfor %}
+    {% if postpreview %}{% include 'OrionForumBundle::Post/preview-post.html.twig' %}{% endif %}
+    {% if is_granted('CanEditTopic', topic) %}{% include 'OrionForumBundle::label.html.twig' %}{% endif %}
+  </ul>
+
+  {{ knp_pagination_render(posts) }}
+  
+  {% if form is not null %}
+    <h2>{{ topic.title }}</h2>
+    {% if date(topic.lastpost) < date('-1month') %}
+      <div class="alert alert-danger text-center" role="alert">{{ 'orion.forum.post.aged'|trans }}</div>
+    {% endif %}
+    {% include 'OrionForumBundle::Form/Post.html.twig' %}
+  {% endif %}
+{% endblock %}
